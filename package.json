@@ -1,0 +1,19 @@
+{
+  "name": "Elementra",
+  "version": "1.0.0",
+  "description": "Elements Exploring Application",
+  "license": "ISC",
+  "author": "Anuraj Oli",
+  "type": "commonjs",
+  "default": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --dist-dir ./dist"
+  },
+  "devDependencies": {
+
+  },
+  "dependencies": {
+    
+}
+}
