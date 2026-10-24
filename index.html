@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f6e2e9">
-    <meta name="description"
-      content="An interactive, friendly guide to the elements and their nuclear and chemical relationships.">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6e2e9" />
+    <meta
+      name="description"
+      content="An interactive, friendly guide to the elements and their nuclear and chemical relationships."
+    />
     <title>Elementra — the element explorer</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <script type="module" src="./src/controller.js" defer></script>
   </head>
   <body data-theme="light">
@@ -15,90 +17,150 @@
     <div class="app-shell">
       <header class="topbar">
         <a class="brand" href="#home" aria-label="Elementra home">
-          <span class="brand-mark"
-            aria-hidden="true"><span>El</span><i></i></span>
-          <span class="brand-name">elementra<span
-              class="brand-period">.</span></span>
+          <span class="brand-mark" aria-hidden="true"
+            ><span>El</span><i></i
+          ></span>
+          <span class="brand-name"
+            >elementra<span class="brand-period">.</span></span
+          >
         </a>
-        <div class="topbar-center"><span class="status-dot"></span> Your curious
-          guide to the elements</div>
+        <div class="topbar-center">
+          <span class="status-dot"></span> Your curious guide to the elements
+        </div>
         <div class="topbar-actions">
-          <button class="icon-button bookmark-nav" type="button"
-            aria-label="Show bookmarked elements" title="Bookmarks"><svg
-              viewBox="0 0 24 24" aria-hidden="true"><path
-                d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z" /></svg><span
-              class="bookmark-count">0</span></button>
+          <button
+            class="icon-button bookmark-nav"
+            type="button"
+            aria-label="Show bookmarked elements"
+            title="Bookmarks"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z"
+              /></svg
+            ><span class="bookmark-count">0</span>
+          </button>
           <div class="theme-switch" role="group" aria-label="Color theme">
-            <button class="theme-option is-selected" type="button"
-              aria-pressed="true" data-theme-choice="light"><span
-                aria-hidden="true">☼</span><span
-                class="theme-label">Light</span></button>
-            <button class="theme-option" type="button" aria-pressed="false"
-              data-theme-choice="comfort"><span aria-hidden="true">◒</span><span
-                class="theme-label">Comfort</span></button>
-            <button class="theme-option" type="button" aria-pressed="false"
-              data-theme-choice="dark"><span aria-hidden="true">☾</span><span
-                class="theme-label">Dark</span></button>
+            <button
+              class="theme-option is-selected"
+              type="button"
+              aria-pressed="true"
+              data-theme-choice="light"
+            >
+              <span aria-hidden="true">☼</span
+              ><span class="theme-label">Light</span>
+            </button>
+            <button
+              class="theme-option"
+              type="button"
+              aria-pressed="false"
+              data-theme-choice="comfort"
+            >
+              <span aria-hidden="true">◒</span
+              ><span class="theme-label">Comfort</span>
+            </button>
+            <button
+              class="theme-option"
+              type="button"
+              aria-pressed="false"
+              data-theme-choice="dark"
+            >
+              <span aria-hidden="true">☾</span
+              ><span class="theme-label">Dark</span>
+            </button>
           </div>
-          <button class="avatar-button" type="button"
-            aria-label="Your profile">A</button>
+          <button class="avatar-button" type="button" aria-label="Your profile">
+            A
+          </button>
         </div>
       </header>
 
       <div class="workspace" id="home">
         <aside class="search-sidebar" aria-label="Element search">
-          <div class="sidebar-heading"><div><p
-                class="eyebrow">DISCOVER</p><h1>Find an element</h1></div><span
-              class="sparkle" aria-hidden="true">✳</span></div>
-          <p class="sidebar-intro">Search the periodic table or explore the
-            elements one by one.</p>
+          <div class="sidebar-heading">
+            <div>
+              <p class="eyebrow">DISCOVER</p>
+              <h1>Find an element</h1>
+            </div>
+            <span class="sparkle" aria-hidden="true">✳</span>
+          </div>
+          <p class="sidebar-intro">
+            Search the periodic table or explore the elements one by one.
+          </p>
           <!-- Search controls: the mode radio values are stable hooks for your JS. -->
           <form class="search-form" role="search" action="#search-results">
-            <label class="field-label" for="element-search">Search
-              elements</label>
+            <label class="field-label" for="element-search"
+              >Search elements</label
+            >
             <div class="search-input-wrap">
-              <svg class="search-icon" viewBox="0 0 24 24"
-                aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" /><path
-                  d="m16 16 4.5 4.5" /></svg>
-              <input id="element-search" name="q" type="search"
-                placeholder="Try “Oxygen” or “8”" autocomplete="off">
+              <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10.8" cy="10.8" r="6.8" />
+                <path d="m16 16 4.5 4.5" />
+              </svg>
+              <input
+                id="element-search"
+                name="q"
+                type="number"
+                placeholder="Try “Oxygen” or “8”"
+                autocomplete="on"
+              />
               <details class="search-mode-picker">
                 <summary aria-label="Choose search mode" class="search-mode">
-                  <span class="current-mode-label current-mode-number">Atomic
-                    no.</span>
-                  <span
-                    class="current-mode-label current-mode-symbol">Symbol</span>
+                  <span class="current-mode-label current-mode-number"
+                    >Atomic no.</span
+                  >
+                  <span class="current-mode-label current-mode-symbol"
+                    >Symbol</span
+                  >
                   <span class="current-mode-label current-mode-name">Name</span>
-                  <svg viewBox="0 0 16 16" aria-hidden="true"><path
-                      d="m4 6 4 4 4-4" /></svg>
+                  <svg viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="m4 6 4 4 4-4" />
+                  </svg>
                 </summary>
-                <div class="search-mode-menu" role="radiogroup"
-                  aria-label="Search mode">
+                <div
+                  class="search-mode-menu"
+                  role="radiogroup"
+                  aria-label="Search mode"
+                >
                   <span class="menu-caption">SEARCH BY</span>
                   <label class="search-mode-option">
-                    <input type="radio" name="search-mode" value="atomic-number"
-                      checked>
+                    <input
+                      type="radio"
+                      name="search-mode"
+                      value="atomic-number"
+                      checked
+                    />
                     <span class="mode-option-mark" aria-hidden="true">#</span>
-                    <span class="mode-option-copy"><strong>Atomic
-                        number</strong><small>Search by Z</small></span>
+                    <span class="mode-option-copy"
+                      ><strong>Atomic number</strong
+                      ><small>Search by Z</small></span
+                    >
                     <span class="mode-option-check" aria-hidden="true">✓</span>
                   </label>
                   <label class="search-mode-option">
-                    <input type="radio" name="search-mode" value="symbol">
-                    <span class="mode-option-mark mode-symbol-mark"
-                      aria-hidden="true">O</span>
+                    <input type="radio" name="search-mode" value="symbol" />
                     <span
-                      class="mode-option-copy"><strong>Symbol</strong><small>Search
-                        by chemical symbol</small></span>
+                      class="mode-option-mark mode-symbol-mark"
+                      aria-hidden="true"
+                      >O</span
+                    >
+                    <span class="mode-option-copy"
+                      ><strong>Symbol</strong
+                      ><small>Search by chemical symbol</small></span
+                    >
                     <span class="mode-option-check" aria-hidden="true">✓</span>
                   </label>
                   <label class="search-mode-option">
-                    <input type="radio" name="search-mode" value="name">
-                    <span class="mode-option-mark mode-name-mark"
-                      aria-hidden="true">Aa</span>
+                    <input type="radio" name="search-mode" value="name" />
                     <span
-                      class="mode-option-copy"><strong>Name</strong><small>Search
-                        by element name</small></span>
+                      class="mode-option-mark mode-name-mark"
+                      aria-hidden="true"
+                      >Aa</span
+                    >
+                    <span class="mode-option-copy"
+                      ><strong>Name</strong
+                      ><small>Search by element name</small></span
+                    >
                     <span class="mode-option-check" aria-hidden="true">✓</span>
                   </label>
                 </div>
@@ -107,679 +169,1835 @@
           </form>
 
           <!-- Search results: keep each row limited to an element illustration, name, symbol and Z. -->
-          <section class="results-section" id="search-results"
-            aria-label="Search results">
+          <section
+            class="results-section"
+            id="search-results"
+            aria-label="Search results"
+          >
             <div class="result-list" aria-live="polite">
-              <article class="result-item is-active" data-element="oxygen"
-                data-atomic-number="8" data-symbol="O" data-name="Oxygen"
-                tabindex="0">
-                <div class="element-thumb oxygen-thumb"
-                  aria-hidden="true"><span>O</span></div><div
-                  class="result-copy"><strong>Oxygen</strong><span>O ·
-                    8</span></div><button class="bookmark-button" type="button"
-                  aria-label="Bookmark Oxygen" aria-pressed="false"><svg
-                    viewBox="0 0 24 24" aria-hidden="true"><path
-                      d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z" /></svg></button>
+              <article
+                class="result-item is-active"
+                data-element="oxygen"
+                data-atomic-number="8"
+                data-symbol="O"
+                data-name="Oxygen"
+                tabindex="0"
+              >
+                <div class="element-thumb oxygen-thumb" aria-hidden="true">
+                  <span>O</span>
+                </div>
+                <div class="result-copy">
+                  <strong>Oxygen</strong><span>O · 8</span>
+                </div>
+                <button
+                  class="bookmark-button"
+                  type="button"
+                  aria-label="Bookmark Oxygen"
+                  aria-pressed="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z"
+                    />
+                  </svg>
+                </button>
               </article>
-              <article class="result-item" data-element="carbon"
-                data-atomic-number="6" data-symbol="C" data-name="Carbon"
-                tabindex="0">
-                <div class="element-thumb carbon-thumb"
-                  aria-hidden="true"><span>C</span></div><div
-                  class="result-copy"><strong>Carbon</strong><span>C ·
-                    6</span></div><button class="bookmark-button" type="button"
-                  aria-label="Bookmark Carbon" aria-pressed="false"><svg
-                    viewBox="0 0 24 24" aria-hidden="true"><path
-                      d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z" /></svg></button>
+              <article
+                class="result-item"
+                data-element="carbon"
+                data-atomic-number="6"
+                data-symbol="C"
+                data-name="Carbon"
+                tabindex="0"
+              >
+                <div class="element-thumb carbon-thumb" aria-hidden="true">
+                  <span>C</span>
+                </div>
+                <div class="result-copy">
+                  <strong>Carbon</strong><span>C · 6</span>
+                </div>
+                <button
+                  class="bookmark-button"
+                  type="button"
+                  aria-label="Bookmark Carbon"
+                  aria-pressed="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z"
+                    />
+                  </svg>
+                </button>
               </article>
-              <article class="result-item" data-element="sodium"
-                data-atomic-number="11" data-symbol="Na" data-name="Sodium"
-                tabindex="0">
-                <div class="element-thumb sodium-thumb"
-                  aria-hidden="true"><span>Na</span></div><div
-                  class="result-copy"><strong>Sodium</strong><span>Na ·
-                    11</span></div><button class="bookmark-button" type="button"
-                  aria-label="Bookmark Sodium" aria-pressed="false"><svg
-                    viewBox="0 0 24 24" aria-hidden="true"><path
-                      d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z" /></svg></button>
+              <article
+                class="result-item"
+                data-element="sodium"
+                data-atomic-number="11"
+                data-symbol="Na"
+                data-name="Sodium"
+                tabindex="0"
+              >
+                <div class="element-thumb sodium-thumb" aria-hidden="true">
+                  <span>Na</span>
+                </div>
+                <div class="result-copy">
+                  <strong>Sodium</strong><span>Na · 11</span>
+                </div>
+                <button
+                  class="bookmark-button"
+                  type="button"
+                  aria-label="Bookmark Sodium"
+                  aria-pressed="false"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path
+                      d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z"
+                    />
+                  </svg>
+                </button>
               </article>
             </div>
-            <nav class="pagination" aria-label="Search results pages"><button
-                type="button" disabled
-                aria-label="Previous page">‹</button><button
-                class="page-number is-current" type="button"
-                aria-current="page">1</button><button class="page-number"
-                type="button">2</button><button class="page-number"
-                type="button">3</button><span>…</span><button
-                class="page-number" type="button">8</button><button
-                type="button" aria-label="Next page">›</button></nav>
+            <nav class="pagination" aria-label="Search results pages">
+              <button type="button" disabled aria-label="Previous page">
+                ‹</button
+              ><button
+                class="page-number is-current"
+                type="button"
+                aria-current="page"
+              >
+                1</button
+              ><button class="page-number" type="button">2</button
+              ><button class="page-number" type="button">3</button><span>…</span
+              ><button class="page-number" type="button">8</button
+              ><button type="button" aria-label="Next page">›</button>
+            </nav>
           </section>
-
         </aside>
 
         <main class="main-content" id="periodic-table">
-          <section class="welcome-row" aria-labelledby="welcome-heading"><div><p
-                class="eyebrow">THE PERIODIC TABLE, REIMAGINED</p><h2
-                id="welcome-heading">A universe of <span>elements.</span></h2><p
-                class="welcome-copy">Hover to meet an element. Stay
-                curious.</p></div><div class="table-meta"><span
-                class="live-indicator"></span> 118 elements <span
-                class="meta-divider">·</span> 7 periods</div></section>
+          <section class="welcome-row" aria-labelledby="welcome-heading">
+            <div>
+              <p class="eyebrow">THE PERIODIC TABLE, REIMAGINED</p>
+              <h2 id="welcome-heading">A universe of <span>elements.</span></h2>
+              <p class="welcome-copy">
+                Hover to meet an element. Stay curious.
+              </p>
+            </div>
+            <div class="table-meta">
+              <span class="live-indicator"></span> 118 elements
+              <span class="meta-divider">·</span> 7 periods
+            </div>
+          </section>
           <!-- --col/--row map the standard table. Move .is-selected in JS so the card anchor follows the active cell. -->
           <section class="table-panel" aria-label="Interactive periodic table">
-            <div class="table-toolbar"><div class="table-key"><span
-                  class="key-label">Element types</span><span
-                  class="key-item"><i class="key-swatch alkali"></i>Alkali
-                  metal</span><span class="key-item"><i
-                    class="key-swatch alkaline"></i>Alkaline earth</span><span
-                  class="key-item"><i
-                    class="key-swatch transition"></i>Transition
-                  metal</span><span class="key-item"><i
-                    class="key-swatch post-transition"></i>Post-transition</span><span
-                  class="key-item"><i
-                    class="key-swatch metalloid"></i>Metalloid</span><span
-                  class="key-item"><i
-                    class="key-swatch nonmetal"></i>Non-metal</span><span
-                  class="key-item"><i
-                    class="key-swatch halogen"></i>Halogen</span><span
-                  class="key-item"><i class="key-swatch noble"></i>Noble
-                  gas</span></div><button class="table-view-button"
-                type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path
-                    d="M4 5h16M4 12h16M4 19h16" /><circle cx="8" cy="5"
-                    r="1.5" /><circle cx="15" cy="12" r="1.5" /><circle cx="10"
-                    cy="19" r="1.5" /></svg> Table view <span
-                  aria-hidden="true">⌄</span></button></div>
-            <div class="periodic-scroll"><div class="periodic-table" role="grid"
-                aria-label="Periodic table of the elements">
-                <div class="group-labels" aria-hidden="true"><span
-                    class="g1">1</span><span class="g2">2</span><span
-                    class="g3">3</span><span class="g4">4</span><span
-                    class="g5">5</span><span class="g6">6</span><span
-                    class="g7">7</span><span class="g8">8</span><span
-                    class="g9">9</span><span class="g10">10</span><span
-                    class="g11">11</span><span class="g12">12</span><span
-                    class="g13">13</span><span class="g14">14</span><span
-                    class="g15">15</span><span class="g16">16</span><span
-                    class="g17">17</span><span class="g18">18</span></div>
-                <div class="period-labels"
-                  aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
-                <button class="element-cell nonmetal" style="--col:1;--row:1"
-                  data-atomic-number="1" data-symbol="H" data-name="Hydrogen"
-                  aria-label="Hydrogen, atomic number 1"><small>1</small><strong>H</strong><span>Hydrogen</span></button>
-                <button class="element-cell noble" style="--col:18;--row:1"
-                  data-atomic-number="2" data-symbol="He" data-name="Helium"
-                  aria-label="Helium, atomic number 2"><small>2</small><strong>He</strong><span>Helium</span></button>
-                <button class="element-cell alkali" style="--col:1;--row:2"
-                  data-atomic-number="3" data-symbol="Li" data-name="Lithium"
-                  aria-label="Lithium, atomic number 3"><small>3</small><strong>Li</strong><span>Lithium</span></button>
-                <button class="element-cell alkaline" style="--col:2;--row:2"
-                  data-atomic-number="4" data-symbol="Be" data-name="Beryllium"
-                  aria-label="Beryllium, atomic number 4"><small>4</small><strong>Be</strong><span>Beryllium</span></button>
-                <button class="element-cell metalloid" style="--col:13;--row:2"
-                  data-atomic-number="5" data-symbol="B" data-name="Boron"
-                  aria-label="Boron, atomic number 5"><small>5</small><strong>B</strong><span>Boron</span></button>
-                <button class="element-cell nonmetal" style="--col:14;--row:2"
-                  data-atomic-number="6" data-symbol="C" data-name="Carbon"
-                  aria-label="Carbon, atomic number 6"><small>6</small><strong>C</strong><span>Carbon</span></button>
-                <button class="element-cell nonmetal" style="--col:15;--row:2"
-                  data-atomic-number="7" data-symbol="N" data-name="Nitrogen"
-                  aria-label="Nitrogen, atomic number 7"><small>7</small><strong>N</strong><span>Nitrogen</span></button>
-                <button class="element-cell nonmetal is-selected"
-                  style="--col:16;--row:2" data-atomic-number="8"
-                  data-symbol="O" data-name="Oxygen"
-                  aria-label="Oxygen, atomic number 8, selected"><small>8</small><strong>O</strong><span>Oxygen</span></button>
-                <button class="element-cell halogen" style="--col:17;--row:2"
-                  data-atomic-number="9" data-symbol="F" data-name="Fluorine"
-                  aria-label="Fluorine, atomic number 9"><small>9</small><strong>F</strong><span>Fluorine</span></button>
-                <button class="element-cell noble" style="--col:18;--row:2"
-                  data-atomic-number="10" data-symbol="Ne" data-name="Neon"
-                  aria-label="Neon, atomic number 10"><small>10</small><strong>Ne</strong><span>Neon</span></button>
-                <button class="element-cell alkali" style="--col:1;--row:3"
-                  data-atomic-number="11" data-symbol="Na" data-name="Sodium"
-                  aria-label="Sodium, atomic number 11"><small>11</small><strong>Na</strong><span>Sodium</span></button>
-                <button class="element-cell alkaline" style="--col:2;--row:3"
-                  data-atomic-number="12" data-symbol="Mg" data-name="Magnesium"
-                  aria-label="Magnesium, atomic number 12"><small>12</small><strong>Mg</strong><span>Magnesium</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:13;--row:3" data-atomic-number="13"
-                  data-symbol="Al" data-name="Aluminium"
-                  aria-label="Aluminium, atomic number 13"><small>13</small><strong>Al</strong><span>Aluminium</span></button>
-                <button class="element-cell metalloid" style="--col:14;--row:3"
-                  data-atomic-number="14" data-symbol="Si" data-name="Silicon"
-                  aria-label="Silicon, atomic number 14"><small>14</small><strong>Si</strong><span>Silicon</span></button>
-                <button class="element-cell metalloid" style="--col:15;--row:3"
-                  data-atomic-number="15" data-symbol="P" data-name="Phosphorus"
-                  aria-label="Phosphorus, atomic number 15"><small>15</small><strong>P</strong><span>Phosphorus</span></button>
-                <button class="element-cell nonmetal" style="--col:16;--row:3"
-                  data-atomic-number="16" data-symbol="S" data-name="Sulfur"
-                  aria-label="Sulfur, atomic number 16"><small>16</small><strong>S</strong><span>Sulfur</span></button>
-                <button class="element-cell halogen" style="--col:17;--row:3"
-                  data-atomic-number="17" data-symbol="Cl" data-name="Chlorine"
-                  aria-label="Chlorine, atomic number 17"><small>17</small><strong>Cl</strong><span>Chlorine</span></button>
-                <button class="element-cell noble" style="--col:18;--row:3"
-                  data-atomic-number="18" data-symbol="Ar" data-name="Argon"
-                  aria-label="Argon, atomic number 18"><small>18</small><strong>Ar</strong><span>Argon</span></button>
-                <button class="element-cell alkali" style="--col:1;--row:4"
-                  data-atomic-number="19" data-symbol="K" data-name="Potassium"
-                  aria-label="Potassium, atomic number 19"><small>19</small><strong>K</strong><span>Potassium</span></button>
-                <button class="element-cell alkaline" style="--col:2;--row:4"
-                  data-atomic-number="20" data-symbol="Ca" data-name="Calcium"
-                  aria-label="Calcium, atomic number 20"><small>20</small><strong>Ca</strong><span>Calcium</span></button>
-                <button class="element-cell transition" style="--col:3;--row:4"
-                  data-atomic-number="21" data-symbol="Sc" data-name="Scandium"
-                  aria-label="Scandium, atomic number 21"><small>21</small><strong>Sc</strong><span>Scandium</span></button>
-                <button class="element-cell transition" style="--col:4;--row:4"
-                  data-atomic-number="22" data-symbol="Ti" data-name="Titanium"
-                  aria-label="Titanium, atomic number 22"><small>22</small><strong>Ti</strong><span>Titanium</span></button>
-                <button class="element-cell transition" style="--col:5;--row:4"
-                  data-atomic-number="23" data-symbol="V" data-name="Vanadium"
-                  aria-label="Vanadium, atomic number 23"><small>23</small><strong>V</strong><span>Vanadium</span></button>
-                <button class="element-cell transition" style="--col:6;--row:4"
-                  data-atomic-number="24" data-symbol="Cr" data-name="Chromium"
-                  aria-label="Chromium, atomic number 24"><small>24</small><strong>Cr</strong><span>Chromium</span></button>
-                <button class="element-cell transition" style="--col:7;--row:4"
-                  data-atomic-number="25" data-symbol="Mn" data-name="Manganese"
-                  aria-label="Manganese, atomic number 25"><small>25</small><strong>Mn</strong><span>Manganese</span></button>
-                <button class="element-cell transition" style="--col:8;--row:4"
-                  data-atomic-number="26" data-symbol="Fe" data-name="Iron"
-                  aria-label="Iron, atomic number 26"><small>26</small><strong>Fe</strong><span>Iron</span></button>
-                <button class="element-cell transition" style="--col:9;--row:4"
-                  data-atomic-number="27" data-symbol="Co" data-name="Cobalt"
-                  aria-label="Cobalt, atomic number 27"><small>27</small><strong>Co</strong><span>Cobalt</span></button>
-                <button class="element-cell transition" style="--col:10;--row:4"
-                  data-atomic-number="28" data-symbol="Ni" data-name="Nickel"
-                  aria-label="Nickel, atomic number 28"><small>28</small><strong>Ni</strong><span>Nickel</span></button>
-                <button class="element-cell transition" style="--col:11;--row:4"
-                  data-atomic-number="29" data-symbol="Cu" data-name="Copper"
-                  aria-label="Copper, atomic number 29"><small>29</small><strong>Cu</strong><span>Copper</span></button>
-                <button class="element-cell transition" style="--col:12;--row:4"
-                  data-atomic-number="30" data-symbol="Zn" data-name="Zinc"
-                  aria-label="Zinc, atomic number 30"><small>30</small><strong>Zn</strong><span>Zinc</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:13;--row:4" data-atomic-number="31"
-                  data-symbol="Ga" data-name="Gallium"
-                  aria-label="Gallium, atomic number 31"><small>31</small><strong>Ga</strong><span>Gallium</span></button>
-                <button class="element-cell metalloid" style="--col:14;--row:4"
-                  data-atomic-number="32" data-symbol="Ge" data-name="Germanium"
-                  aria-label="Germanium, atomic number 32"><small>32</small><strong>Ge</strong><span>Germanium</span></button>
-                <button class="element-cell metalloid" style="--col:15;--row:4"
-                  data-atomic-number="33" data-symbol="As" data-name="Arsenic"
-                  aria-label="Arsenic, atomic number 33"><small>33</small><strong>As</strong><span>Arsenic</span></button>
-                <button class="element-cell nonmetal" style="--col:16;--row:4"
-                  data-atomic-number="34" data-symbol="Se" data-name="Selenium"
-                  aria-label="Selenium, atomic number 34"><small>34</small><strong>Se</strong><span>Selenium</span></button>
-                <button class="element-cell halogen" style="--col:17;--row:4"
-                  data-atomic-number="35" data-symbol="Br" data-name="Bromine"
-                  aria-label="Bromine, atomic number 35"><small>35</small><strong>Br</strong><span>Bromine</span></button>
-                <button class="element-cell noble" style="--col:18;--row:4"
-                  data-atomic-number="36" data-symbol="Kr" data-name="Krypton"
-                  aria-label="Krypton, atomic number 36"><small>36</small><strong>Kr</strong><span>Krypton</span></button>
-                <button class="element-cell alkali" style="--col:1;--row:5"
-                  data-atomic-number="37" data-symbol="Rb" data-name="Rubidium"
-                  aria-label="Rubidium, atomic number 37"><small>37</small><strong>Rb</strong><span>Rubidium</span></button>
-                <button class="element-cell alkaline" style="--col:2;--row:5"
-                  data-atomic-number="38" data-symbol="Sr" data-name="Strontium"
-                  aria-label="Strontium, atomic number 38"><small>38</small><strong>Sr</strong><span>Strontium</span></button>
-                <button class="element-cell transition" style="--col:3;--row:5"
-                  data-atomic-number="39" data-symbol="Y" data-name="Yttrium"
-                  aria-label="Yttrium, atomic number 39"><small>39</small><strong>Y</strong><span>Yttrium</span></button>
-                <button class="element-cell transition" style="--col:4;--row:5"
-                  data-atomic-number="40" data-symbol="Zr" data-name="Zirconium"
-                  aria-label="Zirconium, atomic number 40"><small>40</small><strong>Zr</strong><span>Zirconium</span></button>
-                <button class="element-cell transition" style="--col:5;--row:5"
-                  data-atomic-number="41" data-symbol="Nb" data-name="Niobium"
-                  aria-label="Niobium, atomic number 41"><small>41</small><strong>Nb</strong><span>Niobium</span></button>
-                <button class="element-cell transition" style="--col:6;--row:5"
-                  data-atomic-number="42" data-symbol="Mo"
+            <div class="table-toolbar">
+              <div class="table-key">
+                <span class="key-label">Element types</span
+                ><span class="key-item"
+                  ><i class="key-swatch alkali"></i>Alkali metal</span
+                ><span class="key-item"
+                  ><i class="key-swatch alkaline"></i>Alkaline earth</span
+                ><span class="key-item"
+                  ><i class="key-swatch transition"></i>Transition metal</span
+                ><span class="key-item"
+                  ><i class="key-swatch post-transition"></i
+                  >Post-transition</span
+                ><span class="key-item"
+                  ><i class="key-swatch metalloid"></i>Metalloid</span
+                ><span class="key-item"
+                  ><i class="key-swatch nonmetal"></i>Non-metal</span
+                ><span class="key-item"
+                  ><i class="key-swatch halogen"></i>Halogen</span
+                ><span class="key-item"
+                  ><i class="key-swatch noble"></i>Noble gas</span
+                >
+              </div>
+              <button class="table-view-button" type="button">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 5h16M4 12h16M4 19h16" />
+                  <circle cx="8" cy="5" r="1.5" />
+                  <circle cx="15" cy="12" r="1.5" />
+                  <circle cx="10" cy="19" r="1.5" />
+                </svg>
+                Table view <span aria-hidden="true">⌄</span>
+              </button>
+            </div>
+            <div class="periodic-scroll">
+              <div
+                class="periodic-table"
+                role="grid"
+                aria-label="Periodic table of the elements"
+              >
+                <div class="group-labels" aria-hidden="true">
+                  <span class="g1">1</span><span class="g2">2</span
+                  ><span class="g3">3</span><span class="g4">4</span
+                  ><span class="g5">5</span><span class="g6">6</span
+                  ><span class="g7">7</span><span class="g8">8</span
+                  ><span class="g9">9</span><span class="g10">10</span
+                  ><span class="g11">11</span><span class="g12">12</span
+                  ><span class="g13">13</span><span class="g14">14</span
+                  ><span class="g15">15</span><span class="g16">16</span
+                  ><span class="g17">17</span><span class="g18">18</span>
+                </div>
+                <div class="period-labels" aria-hidden="true">
+                  <span>1</span><span>2</span><span>3</span><span>4</span
+                  ><span>5</span><span>6</span><span>7</span>
+                </div>
+                <button
+                  class="element-cell nonmetal"
+                  style="--col: 1; --row: 1"
+                  data-atomic-number="1"
+                  data-symbol="H"
+                  data-name="Hydrogen"
+                  aria-label="Hydrogen, atomic number 1"
+                >
+                  <small>1</small><strong>H</strong><span>Hydrogen</span>
+                </button>
+                <button
+                  class="element-cell noble"
+                  style="--col: 18; --row: 1"
+                  data-atomic-number="2"
+                  data-symbol="He"
+                  data-name="Helium"
+                  aria-label="Helium, atomic number 2"
+                >
+                  <small>2</small><strong>He</strong><span>Helium</span>
+                </button>
+                <button
+                  class="element-cell alkali"
+                  style="--col: 1; --row: 2"
+                  data-atomic-number="3"
+                  data-symbol="Li"
+                  data-name="Lithium"
+                  aria-label="Lithium, atomic number 3"
+                >
+                  <small>3</small><strong>Li</strong><span>Lithium</span>
+                </button>
+                <button
+                  class="element-cell alkaline"
+                  style="--col: 2; --row: 2"
+                  data-atomic-number="4"
+                  data-symbol="Be"
+                  data-name="Beryllium"
+                  aria-label="Beryllium, atomic number 4"
+                >
+                  <small>4</small><strong>Be</strong><span>Beryllium</span>
+                </button>
+                <button
+                  class="element-cell metalloid"
+                  style="--col: 13; --row: 2"
+                  data-atomic-number="5"
+                  data-symbol="B"
+                  data-name="Boron"
+                  aria-label="Boron, atomic number 5"
+                >
+                  <small>5</small><strong>B</strong><span>Boron</span>
+                </button>
+                <button
+                  class="element-cell nonmetal"
+                  style="--col: 14; --row: 2"
+                  data-atomic-number="6"
+                  data-symbol="C"
+                  data-name="Carbon"
+                  aria-label="Carbon, atomic number 6"
+                >
+                  <small>6</small><strong>C</strong><span>Carbon</span>
+                </button>
+                <button
+                  class="element-cell nonmetal"
+                  style="--col: 15; --row: 2"
+                  data-atomic-number="7"
+                  data-symbol="N"
+                  data-name="Nitrogen"
+                  aria-label="Nitrogen, atomic number 7"
+                >
+                  <small>7</small><strong>N</strong><span>Nitrogen</span>
+                </button>
+                <button
+                  class="element-cell nonmetal is-selected"
+                  style="--col: 16; --row: 2"
+                  data-atomic-number="8"
+                  data-symbol="O"
+                  data-name="Oxygen"
+                  aria-label="Oxygen, atomic number 8, selected"
+                >
+                  <small>8</small><strong>O</strong><span>Oxygen</span>
+                </button>
+                <button
+                  class="element-cell halogen"
+                  style="--col: 17; --row: 2"
+                  data-atomic-number="9"
+                  data-symbol="F"
+                  data-name="Fluorine"
+                  aria-label="Fluorine, atomic number 9"
+                >
+                  <small>9</small><strong>F</strong><span>Fluorine</span>
+                </button>
+                <button
+                  class="element-cell noble"
+                  style="--col: 18; --row: 2"
+                  data-atomic-number="10"
+                  data-symbol="Ne"
+                  data-name="Neon"
+                  aria-label="Neon, atomic number 10"
+                >
+                  <small>10</small><strong>Ne</strong><span>Neon</span>
+                </button>
+                <button
+                  class="element-cell alkali"
+                  style="--col: 1; --row: 3"
+                  data-atomic-number="11"
+                  data-symbol="Na"
+                  data-name="Sodium"
+                  aria-label="Sodium, atomic number 11"
+                >
+                  <small>11</small><strong>Na</strong><span>Sodium</span>
+                </button>
+                <button
+                  class="element-cell alkaline"
+                  style="--col: 2; --row: 3"
+                  data-atomic-number="12"
+                  data-symbol="Mg"
+                  data-name="Magnesium"
+                  aria-label="Magnesium, atomic number 12"
+                >
+                  <small>12</small><strong>Mg</strong><span>Magnesium</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 13; --row: 3"
+                  data-atomic-number="13"
+                  data-symbol="Al"
+                  data-name="Aluminium"
+                  aria-label="Aluminium, atomic number 13"
+                >
+                  <small>13</small><strong>Al</strong><span>Aluminium</span>
+                </button>
+                <button
+                  class="element-cell metalloid"
+                  style="--col: 14; --row: 3"
+                  data-atomic-number="14"
+                  data-symbol="Si"
+                  data-name="Silicon"
+                  aria-label="Silicon, atomic number 14"
+                >
+                  <small>14</small><strong>Si</strong><span>Silicon</span>
+                </button>
+                <button
+                  class="element-cell metalloid"
+                  style="--col: 15; --row: 3"
+                  data-atomic-number="15"
+                  data-symbol="P"
+                  data-name="Phosphorus"
+                  aria-label="Phosphorus, atomic number 15"
+                >
+                  <small>15</small><strong>P</strong><span>Phosphorus</span>
+                </button>
+                <button
+                  class="element-cell nonmetal"
+                  style="--col: 16; --row: 3"
+                  data-atomic-number="16"
+                  data-symbol="S"
+                  data-name="Sulfur"
+                  aria-label="Sulfur, atomic number 16"
+                >
+                  <small>16</small><strong>S</strong><span>Sulfur</span>
+                </button>
+                <button
+                  class="element-cell halogen"
+                  style="--col: 17; --row: 3"
+                  data-atomic-number="17"
+                  data-symbol="Cl"
+                  data-name="Chlorine"
+                  aria-label="Chlorine, atomic number 17"
+                >
+                  <small>17</small><strong>Cl</strong><span>Chlorine</span>
+                </button>
+                <button
+                  class="element-cell noble"
+                  style="--col: 18; --row: 3"
+                  data-atomic-number="18"
+                  data-symbol="Ar"
+                  data-name="Argon"
+                  aria-label="Argon, atomic number 18"
+                >
+                  <small>18</small><strong>Ar</strong><span>Argon</span>
+                </button>
+                <button
+                  class="element-cell alkali"
+                  style="--col: 1; --row: 4"
+                  data-atomic-number="19"
+                  data-symbol="K"
+                  data-name="Potassium"
+                  aria-label="Potassium, atomic number 19"
+                >
+                  <small>19</small><strong>K</strong><span>Potassium</span>
+                </button>
+                <button
+                  class="element-cell alkaline"
+                  style="--col: 2; --row: 4"
+                  data-atomic-number="20"
+                  data-symbol="Ca"
+                  data-name="Calcium"
+                  aria-label="Calcium, atomic number 20"
+                >
+                  <small>20</small><strong>Ca</strong><span>Calcium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 3; --row: 4"
+                  data-atomic-number="21"
+                  data-symbol="Sc"
+                  data-name="Scandium"
+                  aria-label="Scandium, atomic number 21"
+                >
+                  <small>21</small><strong>Sc</strong><span>Scandium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 4; --row: 4"
+                  data-atomic-number="22"
+                  data-symbol="Ti"
+                  data-name="Titanium"
+                  aria-label="Titanium, atomic number 22"
+                >
+                  <small>22</small><strong>Ti</strong><span>Titanium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 5; --row: 4"
+                  data-atomic-number="23"
+                  data-symbol="V"
+                  data-name="Vanadium"
+                  aria-label="Vanadium, atomic number 23"
+                >
+                  <small>23</small><strong>V</strong><span>Vanadium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 6; --row: 4"
+                  data-atomic-number="24"
+                  data-symbol="Cr"
+                  data-name="Chromium"
+                  aria-label="Chromium, atomic number 24"
+                >
+                  <small>24</small><strong>Cr</strong><span>Chromium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 7; --row: 4"
+                  data-atomic-number="25"
+                  data-symbol="Mn"
+                  data-name="Manganese"
+                  aria-label="Manganese, atomic number 25"
+                >
+                  <small>25</small><strong>Mn</strong><span>Manganese</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 8; --row: 4"
+                  data-atomic-number="26"
+                  data-symbol="Fe"
+                  data-name="Iron"
+                  aria-label="Iron, atomic number 26"
+                >
+                  <small>26</small><strong>Fe</strong><span>Iron</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 9; --row: 4"
+                  data-atomic-number="27"
+                  data-symbol="Co"
+                  data-name="Cobalt"
+                  aria-label="Cobalt, atomic number 27"
+                >
+                  <small>27</small><strong>Co</strong><span>Cobalt</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 10; --row: 4"
+                  data-atomic-number="28"
+                  data-symbol="Ni"
+                  data-name="Nickel"
+                  aria-label="Nickel, atomic number 28"
+                >
+                  <small>28</small><strong>Ni</strong><span>Nickel</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 11; --row: 4"
+                  data-atomic-number="29"
+                  data-symbol="Cu"
+                  data-name="Copper"
+                  aria-label="Copper, atomic number 29"
+                >
+                  <small>29</small><strong>Cu</strong><span>Copper</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 12; --row: 4"
+                  data-atomic-number="30"
+                  data-symbol="Zn"
+                  data-name="Zinc"
+                  aria-label="Zinc, atomic number 30"
+                >
+                  <small>30</small><strong>Zn</strong><span>Zinc</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 13; --row: 4"
+                  data-atomic-number="31"
+                  data-symbol="Ga"
+                  data-name="Gallium"
+                  aria-label="Gallium, atomic number 31"
+                >
+                  <small>31</small><strong>Ga</strong><span>Gallium</span>
+                </button>
+                <button
+                  class="element-cell metalloid"
+                  style="--col: 14; --row: 4"
+                  data-atomic-number="32"
+                  data-symbol="Ge"
+                  data-name="Germanium"
+                  aria-label="Germanium, atomic number 32"
+                >
+                  <small>32</small><strong>Ge</strong><span>Germanium</span>
+                </button>
+                <button
+                  class="element-cell metalloid"
+                  style="--col: 15; --row: 4"
+                  data-atomic-number="33"
+                  data-symbol="As"
+                  data-name="Arsenic"
+                  aria-label="Arsenic, atomic number 33"
+                >
+                  <small>33</small><strong>As</strong><span>Arsenic</span>
+                </button>
+                <button
+                  class="element-cell nonmetal"
+                  style="--col: 16; --row: 4"
+                  data-atomic-number="34"
+                  data-symbol="Se"
+                  data-name="Selenium"
+                  aria-label="Selenium, atomic number 34"
+                >
+                  <small>34</small><strong>Se</strong><span>Selenium</span>
+                </button>
+                <button
+                  class="element-cell halogen"
+                  style="--col: 17; --row: 4"
+                  data-atomic-number="35"
+                  data-symbol="Br"
+                  data-name="Bromine"
+                  aria-label="Bromine, atomic number 35"
+                >
+                  <small>35</small><strong>Br</strong><span>Bromine</span>
+                </button>
+                <button
+                  class="element-cell noble"
+                  style="--col: 18; --row: 4"
+                  data-atomic-number="36"
+                  data-symbol="Kr"
+                  data-name="Krypton"
+                  aria-label="Krypton, atomic number 36"
+                >
+                  <small>36</small><strong>Kr</strong><span>Krypton</span>
+                </button>
+                <button
+                  class="element-cell alkali"
+                  style="--col: 1; --row: 5"
+                  data-atomic-number="37"
+                  data-symbol="Rb"
+                  data-name="Rubidium"
+                  aria-label="Rubidium, atomic number 37"
+                >
+                  <small>37</small><strong>Rb</strong><span>Rubidium</span>
+                </button>
+                <button
+                  class="element-cell alkaline"
+                  style="--col: 2; --row: 5"
+                  data-atomic-number="38"
+                  data-symbol="Sr"
+                  data-name="Strontium"
+                  aria-label="Strontium, atomic number 38"
+                >
+                  <small>38</small><strong>Sr</strong><span>Strontium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 3; --row: 5"
+                  data-atomic-number="39"
+                  data-symbol="Y"
+                  data-name="Yttrium"
+                  aria-label="Yttrium, atomic number 39"
+                >
+                  <small>39</small><strong>Y</strong><span>Yttrium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 4; --row: 5"
+                  data-atomic-number="40"
+                  data-symbol="Zr"
+                  data-name="Zirconium"
+                  aria-label="Zirconium, atomic number 40"
+                >
+                  <small>40</small><strong>Zr</strong><span>Zirconium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 5; --row: 5"
+                  data-atomic-number="41"
+                  data-symbol="Nb"
+                  data-name="Niobium"
+                  aria-label="Niobium, atomic number 41"
+                >
+                  <small>41</small><strong>Nb</strong><span>Niobium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 6; --row: 5"
+                  data-atomic-number="42"
+                  data-symbol="Mo"
                   data-name="Molybdenum"
-                  aria-label="Molybdenum, atomic number 42"><small>42</small><strong>Mo</strong><span>Molybdenum</span></button>
-                <button class="element-cell transition" style="--col:7;--row:5"
-                  data-atomic-number="43" data-symbol="Tc"
+                  aria-label="Molybdenum, atomic number 42"
+                >
+                  <small>42</small><strong>Mo</strong><span>Molybdenum</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 7; --row: 5"
+                  data-atomic-number="43"
+                  data-symbol="Tc"
                   data-name="Technetium"
-                  aria-label="Technetium, atomic number 43"><small>43</small><strong>Tc</strong><span>Technetium</span></button>
-                <button class="element-cell transition" style="--col:8;--row:5"
-                  data-atomic-number="44" data-symbol="Ru" data-name="Ruthenium"
-                  aria-label="Ruthenium, atomic number 44"><small>44</small><strong>Ru</strong><span>Ruthenium</span></button>
-                <button class="element-cell transition" style="--col:9;--row:5"
-                  data-atomic-number="45" data-symbol="Rh" data-name="Rhodium"
-                  aria-label="Rhodium, atomic number 45"><small>45</small><strong>Rh</strong><span>Rhodium</span></button>
-                <button class="element-cell transition" style="--col:10;--row:5"
-                  data-atomic-number="46" data-symbol="Pd" data-name="Palladium"
-                  aria-label="Palladium, atomic number 46"><small>46</small><strong>Pd</strong><span>Palladium</span></button>
-                <button class="element-cell transition" style="--col:11;--row:5"
-                  data-atomic-number="47" data-symbol="Ag" data-name="Silver"
-                  aria-label="Silver, atomic number 47"><small>47</small><strong>Ag</strong><span>Silver</span></button>
-                <button class="element-cell transition" style="--col:12;--row:5"
-                  data-atomic-number="48" data-symbol="Cd" data-name="Cadmium"
-                  aria-label="Cadmium, atomic number 48"><small>48</small><strong>Cd</strong><span>Cadmium</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:13;--row:5" data-atomic-number="49"
-                  data-symbol="In" data-name="Indium"
-                  aria-label="Indium, atomic number 49"><small>49</small><strong>In</strong><span>Indium</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:14;--row:5" data-atomic-number="50"
-                  data-symbol="Sn" data-name="Tin"
-                  aria-label="Tin, atomic number 50"><small>50</small><strong>Sn</strong><span>Tin</span></button>
-                <button class="element-cell metalloid" style="--col:15;--row:5"
-                  data-atomic-number="51" data-symbol="Sb" data-name="Antimony"
-                  aria-label="Antimony, atomic number 51"><small>51</small><strong>Sb</strong><span>Antimony</span></button>
-                <button class="element-cell metalloid" style="--col:16;--row:5"
-                  data-atomic-number="52" data-symbol="Te" data-name="Tellurium"
-                  aria-label="Tellurium, atomic number 52"><small>52</small><strong>Te</strong><span>Tellurium</span></button>
-                <button class="element-cell halogen" style="--col:17;--row:5"
-                  data-atomic-number="53" data-symbol="I" data-name="Iodine"
-                  aria-label="Iodine, atomic number 53"><small>53</small><strong>I</strong><span>Iodine</span></button>
-                <button class="element-cell noble" style="--col:18;--row:5"
-                  data-atomic-number="54" data-symbol="Xe" data-name="Xenon"
-                  aria-label="Xenon, atomic number 54"><small>54</small><strong>Xe</strong><span>Xenon</span></button>
-                <button class="element-cell alkali" style="--col:1;--row:6"
-                  data-atomic-number="55" data-symbol="Cs" data-name="Caesium"
-                  aria-label="Caesium, atomic number 55"><small>55</small><strong>Cs</strong><span>Caesium</span></button>
-                <button class="element-cell alkaline" style="--col:2;--row:6"
-                  data-atomic-number="56" data-symbol="Ba" data-name="Barium"
-                  aria-label="Barium, atomic number 56"><small>56</small><strong>Ba</strong><span>Barium</span></button>
-                <button class="element-cell lanth-placeholder"
-                  style="--col:3;--row:6"
-                  aria-label="Lanthanides, atomic numbers 57 to 71"><small>57–71</small><strong>La–Lu</strong><span>Lanthanoids</span></button>
-                <button class="element-cell transition" style="--col:4;--row:6"
-                  data-atomic-number="72" data-symbol="Hf" data-name="Hafnium"
-                  aria-label="Hafnium, atomic number 72"><small>72</small><strong>Hf</strong><span>Hafnium</span></button>
-                <button class="element-cell transition" style="--col:5;--row:6"
-                  data-atomic-number="73" data-symbol="Ta" data-name="Tantalum"
-                  aria-label="Tantalum, atomic number 73"><small>73</small><strong>Ta</strong><span>Tantalum</span></button>
-                <button class="element-cell transition" style="--col:6;--row:6"
-                  data-atomic-number="74" data-symbol="W" data-name="Tungsten"
-                  aria-label="Tungsten, atomic number 74"><small>74</small><strong>W</strong><span>Tungsten</span></button>
-                <button class="element-cell transition" style="--col:7;--row:6"
-                  data-atomic-number="75" data-symbol="Re" data-name="Rhenium"
-                  aria-label="Rhenium, atomic number 75"><small>75</small><strong>Re</strong><span>Rhenium</span></button>
-                <button class="element-cell transition" style="--col:8;--row:6"
-                  data-atomic-number="76" data-symbol="Os" data-name="Osmium"
-                  aria-label="Osmium, atomic number 76"><small>76</small><strong>Os</strong><span>Osmium</span></button>
-                <button class="element-cell transition" style="--col:9;--row:6"
-                  data-atomic-number="77" data-symbol="Ir" data-name="Iridium"
-                  aria-label="Iridium, atomic number 77"><small>77</small><strong>Ir</strong><span>Iridium</span></button>
-                <button class="element-cell transition" style="--col:10;--row:6"
-                  data-atomic-number="78" data-symbol="Pt" data-name="Platinum"
-                  aria-label="Platinum, atomic number 78"><small>78</small><strong>Pt</strong><span>Platinum</span></button>
-                <button class="element-cell transition" style="--col:11;--row:6"
-                  data-atomic-number="79" data-symbol="Au" data-name="Gold"
-                  aria-label="Gold, atomic number 79"><small>79</small><strong>Au</strong><span>Gold</span></button>
-                <button class="element-cell transition" style="--col:12;--row:6"
-                  data-atomic-number="80" data-symbol="Hg" data-name="Mercury"
-                  aria-label="Mercury, atomic number 80"><small>80</small><strong>Hg</strong><span>Mercury</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:13;--row:6" data-atomic-number="81"
-                  data-symbol="Tl" data-name="Thallium"
-                  aria-label="Thallium, atomic number 81"><small>81</small><strong>Tl</strong><span>Thallium</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:14;--row:6" data-atomic-number="82"
-                  data-symbol="Pb" data-name="Lead"
-                  aria-label="Lead, atomic number 82"><small>82</small><strong>Pb</strong><span>Lead</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:15;--row:6" data-atomic-number="83"
-                  data-symbol="Bi" data-name="Bismuth"
-                  aria-label="Bismuth, atomic number 83"><small>83</small><strong>Bi</strong><span>Bismuth</span></button>
-                <button class="element-cell metalloid" style="--col:16;--row:6"
-                  data-atomic-number="84" data-symbol="Po" data-name="Polonium"
-                  aria-label="Polonium, atomic number 84"><small>84</small><strong>Po</strong><span>Polonium</span></button>
-                <button class="element-cell halogen" style="--col:17;--row:6"
-                  data-atomic-number="85" data-symbol="At" data-name="Astatine"
-                  aria-label="Astatine, atomic number 85"><small>85</small><strong>At</strong><span>Astatine</span></button>
-                <button class="element-cell noble" style="--col:18;--row:6"
-                  data-atomic-number="86" data-symbol="Rn" data-name="Radon"
-                  aria-label="Radon, atomic number 86"><small>86</small><strong>Rn</strong><span>Radon</span></button>
-                <button class="element-cell alkali" style="--col:1;--row:7"
-                  data-atomic-number="87" data-symbol="Fr" data-name="Francium"
-                  aria-label="Francium, atomic number 87"><small>87</small><strong>Fr</strong><span>Francium</span></button>
-                <button class="element-cell alkaline" style="--col:2;--row:7"
-                  data-atomic-number="88" data-symbol="Ra" data-name="Radium"
-                  aria-label="Radium, atomic number 88"><small>88</small><strong>Ra</strong><span>Radium</span></button>
-                <button class="element-cell act-placeholder"
-                  style="--col:3;--row:7"
-                  aria-label="Actinides, atomic numbers 89 to 103"><small>89–103</small><strong>Ac–Lr</strong><span>Actinoids</span></button>
-                <button class="element-cell transition" style="--col:4;--row:7"
-                  data-atomic-number="104" data-symbol="Rf"
+                  aria-label="Technetium, atomic number 43"
+                >
+                  <small>43</small><strong>Tc</strong><span>Technetium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 8; --row: 5"
+                  data-atomic-number="44"
+                  data-symbol="Ru"
+                  data-name="Ruthenium"
+                  aria-label="Ruthenium, atomic number 44"
+                >
+                  <small>44</small><strong>Ru</strong><span>Ruthenium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 9; --row: 5"
+                  data-atomic-number="45"
+                  data-symbol="Rh"
+                  data-name="Rhodium"
+                  aria-label="Rhodium, atomic number 45"
+                >
+                  <small>45</small><strong>Rh</strong><span>Rhodium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 10; --row: 5"
+                  data-atomic-number="46"
+                  data-symbol="Pd"
+                  data-name="Palladium"
+                  aria-label="Palladium, atomic number 46"
+                >
+                  <small>46</small><strong>Pd</strong><span>Palladium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 11; --row: 5"
+                  data-atomic-number="47"
+                  data-symbol="Ag"
+                  data-name="Silver"
+                  aria-label="Silver, atomic number 47"
+                >
+                  <small>47</small><strong>Ag</strong><span>Silver</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 12; --row: 5"
+                  data-atomic-number="48"
+                  data-symbol="Cd"
+                  data-name="Cadmium"
+                  aria-label="Cadmium, atomic number 48"
+                >
+                  <small>48</small><strong>Cd</strong><span>Cadmium</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 13; --row: 5"
+                  data-atomic-number="49"
+                  data-symbol="In"
+                  data-name="Indium"
+                  aria-label="Indium, atomic number 49"
+                >
+                  <small>49</small><strong>In</strong><span>Indium</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 14; --row: 5"
+                  data-atomic-number="50"
+                  data-symbol="Sn"
+                  data-name="Tin"
+                  aria-label="Tin, atomic number 50"
+                >
+                  <small>50</small><strong>Sn</strong><span>Tin</span>
+                </button>
+                <button
+                  class="element-cell metalloid"
+                  style="--col: 15; --row: 5"
+                  data-atomic-number="51"
+                  data-symbol="Sb"
+                  data-name="Antimony"
+                  aria-label="Antimony, atomic number 51"
+                >
+                  <small>51</small><strong>Sb</strong><span>Antimony</span>
+                </button>
+                <button
+                  class="element-cell metalloid"
+                  style="--col: 16; --row: 5"
+                  data-atomic-number="52"
+                  data-symbol="Te"
+                  data-name="Tellurium"
+                  aria-label="Tellurium, atomic number 52"
+                >
+                  <small>52</small><strong>Te</strong><span>Tellurium</span>
+                </button>
+                <button
+                  class="element-cell halogen"
+                  style="--col: 17; --row: 5"
+                  data-atomic-number="53"
+                  data-symbol="I"
+                  data-name="Iodine"
+                  aria-label="Iodine, atomic number 53"
+                >
+                  <small>53</small><strong>I</strong><span>Iodine</span>
+                </button>
+                <button
+                  class="element-cell noble"
+                  style="--col: 18; --row: 5"
+                  data-atomic-number="54"
+                  data-symbol="Xe"
+                  data-name="Xenon"
+                  aria-label="Xenon, atomic number 54"
+                >
+                  <small>54</small><strong>Xe</strong><span>Xenon</span>
+                </button>
+                <button
+                  class="element-cell alkali"
+                  style="--col: 1; --row: 6"
+                  data-atomic-number="55"
+                  data-symbol="Cs"
+                  data-name="Caesium"
+                  aria-label="Caesium, atomic number 55"
+                >
+                  <small>55</small><strong>Cs</strong><span>Caesium</span>
+                </button>
+                <button
+                  class="element-cell alkaline"
+                  style="--col: 2; --row: 6"
+                  data-atomic-number="56"
+                  data-symbol="Ba"
+                  data-name="Barium"
+                  aria-label="Barium, atomic number 56"
+                >
+                  <small>56</small><strong>Ba</strong><span>Barium</span>
+                </button>
+                <button
+                  class="element-cell lanth-placeholder"
+                  style="--col: 3; --row: 6"
+                  aria-label="Lanthanides, atomic numbers 57 to 71"
+                >
+                  <small>57–71</small><strong>La–Lu</strong
+                  ><span>Lanthanoids</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 4; --row: 6"
+                  data-atomic-number="72"
+                  data-symbol="Hf"
+                  data-name="Hafnium"
+                  aria-label="Hafnium, atomic number 72"
+                >
+                  <small>72</small><strong>Hf</strong><span>Hafnium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 5; --row: 6"
+                  data-atomic-number="73"
+                  data-symbol="Ta"
+                  data-name="Tantalum"
+                  aria-label="Tantalum, atomic number 73"
+                >
+                  <small>73</small><strong>Ta</strong><span>Tantalum</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 6; --row: 6"
+                  data-atomic-number="74"
+                  data-symbol="W"
+                  data-name="Tungsten"
+                  aria-label="Tungsten, atomic number 74"
+                >
+                  <small>74</small><strong>W</strong><span>Tungsten</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 7; --row: 6"
+                  data-atomic-number="75"
+                  data-symbol="Re"
+                  data-name="Rhenium"
+                  aria-label="Rhenium, atomic number 75"
+                >
+                  <small>75</small><strong>Re</strong><span>Rhenium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 8; --row: 6"
+                  data-atomic-number="76"
+                  data-symbol="Os"
+                  data-name="Osmium"
+                  aria-label="Osmium, atomic number 76"
+                >
+                  <small>76</small><strong>Os</strong><span>Osmium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 9; --row: 6"
+                  data-atomic-number="77"
+                  data-symbol="Ir"
+                  data-name="Iridium"
+                  aria-label="Iridium, atomic number 77"
+                >
+                  <small>77</small><strong>Ir</strong><span>Iridium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 10; --row: 6"
+                  data-atomic-number="78"
+                  data-symbol="Pt"
+                  data-name="Platinum"
+                  aria-label="Platinum, atomic number 78"
+                >
+                  <small>78</small><strong>Pt</strong><span>Platinum</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 11; --row: 6"
+                  data-atomic-number="79"
+                  data-symbol="Au"
+                  data-name="Gold"
+                  aria-label="Gold, atomic number 79"
+                >
+                  <small>79</small><strong>Au</strong><span>Gold</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 12; --row: 6"
+                  data-atomic-number="80"
+                  data-symbol="Hg"
+                  data-name="Mercury"
+                  aria-label="Mercury, atomic number 80"
+                >
+                  <small>80</small><strong>Hg</strong><span>Mercury</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 13; --row: 6"
+                  data-atomic-number="81"
+                  data-symbol="Tl"
+                  data-name="Thallium"
+                  aria-label="Thallium, atomic number 81"
+                >
+                  <small>81</small><strong>Tl</strong><span>Thallium</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 14; --row: 6"
+                  data-atomic-number="82"
+                  data-symbol="Pb"
+                  data-name="Lead"
+                  aria-label="Lead, atomic number 82"
+                >
+                  <small>82</small><strong>Pb</strong><span>Lead</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 15; --row: 6"
+                  data-atomic-number="83"
+                  data-symbol="Bi"
+                  data-name="Bismuth"
+                  aria-label="Bismuth, atomic number 83"
+                >
+                  <small>83</small><strong>Bi</strong><span>Bismuth</span>
+                </button>
+                <button
+                  class="element-cell metalloid"
+                  style="--col: 16; --row: 6"
+                  data-atomic-number="84"
+                  data-symbol="Po"
+                  data-name="Polonium"
+                  aria-label="Polonium, atomic number 84"
+                >
+                  <small>84</small><strong>Po</strong><span>Polonium</span>
+                </button>
+                <button
+                  class="element-cell halogen"
+                  style="--col: 17; --row: 6"
+                  data-atomic-number="85"
+                  data-symbol="At"
+                  data-name="Astatine"
+                  aria-label="Astatine, atomic number 85"
+                >
+                  <small>85</small><strong>At</strong><span>Astatine</span>
+                </button>
+                <button
+                  class="element-cell noble"
+                  style="--col: 18; --row: 6"
+                  data-atomic-number="86"
+                  data-symbol="Rn"
+                  data-name="Radon"
+                  aria-label="Radon, atomic number 86"
+                >
+                  <small>86</small><strong>Rn</strong><span>Radon</span>
+                </button>
+                <button
+                  class="element-cell alkali"
+                  style="--col: 1; --row: 7"
+                  data-atomic-number="87"
+                  data-symbol="Fr"
+                  data-name="Francium"
+                  aria-label="Francium, atomic number 87"
+                >
+                  <small>87</small><strong>Fr</strong><span>Francium</span>
+                </button>
+                <button
+                  class="element-cell alkaline"
+                  style="--col: 2; --row: 7"
+                  data-atomic-number="88"
+                  data-symbol="Ra"
+                  data-name="Radium"
+                  aria-label="Radium, atomic number 88"
+                >
+                  <small>88</small><strong>Ra</strong><span>Radium</span>
+                </button>
+                <button
+                  class="element-cell act-placeholder"
+                  style="--col: 3; --row: 7"
+                  aria-label="Actinides, atomic numbers 89 to 103"
+                >
+                  <small>89–103</small><strong>Ac–Lr</strong
+                  ><span>Actinoids</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 4; --row: 7"
+                  data-atomic-number="104"
+                  data-symbol="Rf"
                   data-name="Rutherfordium"
-                  aria-label="Rutherfordium, atomic number 104"><small>104</small><strong>Rf</strong><span>Rutherfordium</span></button>
-                <button class="element-cell transition" style="--col:5;--row:7"
-                  data-atomic-number="105" data-symbol="Db" data-name="Dubnium"
-                  aria-label="Dubnium, atomic number 105"><small>105</small><strong>Db</strong><span>Dubnium</span></button>
-                <button class="element-cell transition" style="--col:6;--row:7"
-                  data-atomic-number="106" data-symbol="Sg"
+                  aria-label="Rutherfordium, atomic number 104"
+                >
+                  <small>104</small><strong>Rf</strong
+                  ><span>Rutherfordium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 5; --row: 7"
+                  data-atomic-number="105"
+                  data-symbol="Db"
+                  data-name="Dubnium"
+                  aria-label="Dubnium, atomic number 105"
+                >
+                  <small>105</small><strong>Db</strong><span>Dubnium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 6; --row: 7"
+                  data-atomic-number="106"
+                  data-symbol="Sg"
                   data-name="Seaborgium"
-                  aria-label="Seaborgium, atomic number 106"><small>106</small><strong>Sg</strong><span>Seaborgium</span></button>
-                <button class="element-cell transition" style="--col:7;--row:7"
-                  data-atomic-number="107" data-symbol="Bh" data-name="Bohrium"
-                  aria-label="Bohrium, atomic number 107"><small>107</small><strong>Bh</strong><span>Bohrium</span></button>
-                <button class="element-cell transition" style="--col:8;--row:7"
-                  data-atomic-number="108" data-symbol="Hs" data-name="Hassium"
-                  aria-label="Hassium, atomic number 108"><small>108</small><strong>Hs</strong><span>Hassium</span></button>
-                <button class="element-cell unknown" style="--col:9;--row:7"
-                  data-atomic-number="109" data-symbol="Mt"
+                  aria-label="Seaborgium, atomic number 106"
+                >
+                  <small>106</small><strong>Sg</strong><span>Seaborgium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 7; --row: 7"
+                  data-atomic-number="107"
+                  data-symbol="Bh"
+                  data-name="Bohrium"
+                  aria-label="Bohrium, atomic number 107"
+                >
+                  <small>107</small><strong>Bh</strong><span>Bohrium</span>
+                </button>
+                <button
+                  class="element-cell transition"
+                  style="--col: 8; --row: 7"
+                  data-atomic-number="108"
+                  data-symbol="Hs"
+                  data-name="Hassium"
+                  aria-label="Hassium, atomic number 108"
+                >
+                  <small>108</small><strong>Hs</strong><span>Hassium</span>
+                </button>
+                <button
+                  class="element-cell unknown"
+                  style="--col: 9; --row: 7"
+                  data-atomic-number="109"
+                  data-symbol="Mt"
                   data-name="Meitnerium"
-                  aria-label="Meitnerium, atomic number 109"><small>109</small><strong>Mt</strong><span>Meitnerium</span></button>
-                <button class="element-cell unknown" style="--col:10;--row:7"
-                  data-atomic-number="110" data-symbol="Ds"
+                  aria-label="Meitnerium, atomic number 109"
+                >
+                  <small>109</small><strong>Mt</strong><span>Meitnerium</span>
+                </button>
+                <button
+                  class="element-cell unknown"
+                  style="--col: 10; --row: 7"
+                  data-atomic-number="110"
+                  data-symbol="Ds"
                   data-name="Darmstadtium"
-                  aria-label="Darmstadtium, atomic number 110"><small>110</small><strong>Ds</strong><span>Darmstadtium</span></button>
-                <button class="element-cell unknown" style="--col:11;--row:7"
-                  data-atomic-number="111" data-symbol="Rg"
+                  aria-label="Darmstadtium, atomic number 110"
+                >
+                  <small>110</small><strong>Ds</strong><span>Darmstadtium</span>
+                </button>
+                <button
+                  class="element-cell unknown"
+                  style="--col: 11; --row: 7"
+                  data-atomic-number="111"
+                  data-symbol="Rg"
                   data-name="Roentgenium"
-                  aria-label="Roentgenium, atomic number 111"><small>111</small><strong>Rg</strong><span>Roentgenium</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:12;--row:7" data-atomic-number="112"
-                  data-symbol="Cn" data-name="Copernicium"
-                  aria-label="Copernicium, atomic number 112"><small>112</small><strong>Cn</strong><span>Copernicium</span></button>
-                <button class="element-cell unknown" style="--col:13;--row:7"
-                  data-atomic-number="113" data-symbol="Nh" data-name="Nihonium"
-                  aria-label="Nihonium, atomic number 113"><small>113</small><strong>Nh</strong><span>Nihonium</span></button>
-                <button class="element-cell post-transition"
-                  style="--col:14;--row:7" data-atomic-number="114"
-                  data-symbol="Fl" data-name="Flerovium"
-                  aria-label="Flerovium, atomic number 114"><small>114</small><strong>Fl</strong><span>Flerovium</span></button>
-                <button class="element-cell unknown" style="--col:15;--row:7"
-                  data-atomic-number="115" data-symbol="Mc"
+                  aria-label="Roentgenium, atomic number 111"
+                >
+                  <small>111</small><strong>Rg</strong><span>Roentgenium</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 12; --row: 7"
+                  data-atomic-number="112"
+                  data-symbol="Cn"
+                  data-name="Copernicium"
+                  aria-label="Copernicium, atomic number 112"
+                >
+                  <small>112</small><strong>Cn</strong><span>Copernicium</span>
+                </button>
+                <button
+                  class="element-cell unknown"
+                  style="--col: 13; --row: 7"
+                  data-atomic-number="113"
+                  data-symbol="Nh"
+                  data-name="Nihonium"
+                  aria-label="Nihonium, atomic number 113"
+                >
+                  <small>113</small><strong>Nh</strong><span>Nihonium</span>
+                </button>
+                <button
+                  class="element-cell post-transition"
+                  style="--col: 14; --row: 7"
+                  data-atomic-number="114"
+                  data-symbol="Fl"
+                  data-name="Flerovium"
+                  aria-label="Flerovium, atomic number 114"
+                >
+                  <small>114</small><strong>Fl</strong><span>Flerovium</span>
+                </button>
+                <button
+                  class="element-cell unknown"
+                  style="--col: 15; --row: 7"
+                  data-atomic-number="115"
+                  data-symbol="Mc"
                   data-name="Moscovium"
-                  aria-label="Moscovium, atomic number 115"><small>115</small><strong>Mc</strong><span>Moscovium</span></button>
-                <button class="element-cell unknown" style="--col:16;--row:7"
-                  data-atomic-number="116" data-symbol="Lv"
+                  aria-label="Moscovium, atomic number 115"
+                >
+                  <small>115</small><strong>Mc</strong><span>Moscovium</span>
+                </button>
+                <button
+                  class="element-cell unknown"
+                  style="--col: 16; --row: 7"
+                  data-atomic-number="116"
+                  data-symbol="Lv"
                   data-name="Livermorium"
-                  aria-label="Livermorium, atomic number 116"><small>116</small><strong>Lv</strong><span>Livermorium</span></button>
-                <button class="element-cell unknown" style="--col:17;--row:7"
-                  data-atomic-number="117" data-symbol="Ts"
+                  aria-label="Livermorium, atomic number 116"
+                >
+                  <small>116</small><strong>Lv</strong><span>Livermorium</span>
+                </button>
+                <button
+                  class="element-cell unknown"
+                  style="--col: 17; --row: 7"
+                  data-atomic-number="117"
+                  data-symbol="Ts"
                   data-name="Tennessine"
-                  aria-label="Tennessine, atomic number 117"><small>117</small><strong>Ts</strong><span>Tennessine</span></button>
-                <button class="element-cell unknown" style="--col:18;--row:7"
-                  data-atomic-number="118" data-symbol="Og"
+                  aria-label="Tennessine, atomic number 117"
+                >
+                  <small>117</small><strong>Ts</strong><span>Tennessine</span>
+                </button>
+                <button
+                  class="element-cell unknown"
+                  style="--col: 18; --row: 7"
+                  data-atomic-number="118"
+                  data-symbol="Og"
                   data-name="Oganesson"
-                  aria-label="Oganesson, atomic number 118"><small>118</small><strong>Og</strong><span>Oganesson</span></button>
+                  aria-label="Oganesson, atomic number 118"
+                >
+                  <small>118</small><strong>Og</strong><span>Oganesson</span>
+                </button>
                 <!-- Detached f-block: row 8 is an intentional spacer; these series start in group 4. -->
                 <div class="series-label lanth-label">Lanthanides</div>
-                <button class="element-cell lanthanoid" style="--col:4;--row:9"
-                  data-atomic-number="57" data-symbol="La" data-name="Lanthanum"
-                  aria-label="Lanthanum, atomic number 57"><small>57</small><strong>La</strong><span>Lanthanum</span></button>
-                <button class="element-cell lanthanoid" style="--col:5;--row:9"
-                  data-atomic-number="58" data-symbol="Ce" data-name="Cerium"
-                  aria-label="Cerium, atomic number 58"><small>58</small><strong>Ce</strong><span>Cerium</span></button>
-                <button class="element-cell lanthanoid" style="--col:6;--row:9"
-                  data-atomic-number="59" data-symbol="Pr"
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 4; --row: 9"
+                  data-atomic-number="57"
+                  data-symbol="La"
+                  data-name="Lanthanum"
+                  aria-label="Lanthanum, atomic number 57"
+                >
+                  <small>57</small><strong>La</strong><span>Lanthanum</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 5; --row: 9"
+                  data-atomic-number="58"
+                  data-symbol="Ce"
+                  data-name="Cerium"
+                  aria-label="Cerium, atomic number 58"
+                >
+                  <small>58</small><strong>Ce</strong><span>Cerium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 6; --row: 9"
+                  data-atomic-number="59"
+                  data-symbol="Pr"
                   data-name="Praseodymium"
-                  aria-label="Praseodymium, atomic number 59"><small>59</small><strong>Pr</strong><span>Praseodymium</span></button>
-                <button class="element-cell lanthanoid" style="--col:7;--row:9"
-                  data-atomic-number="60" data-symbol="Nd" data-name="Neodymium"
-                  aria-label="Neodymium, atomic number 60"><small>60</small><strong>Nd</strong><span>Neodymium</span></button>
-                <button class="element-cell lanthanoid" style="--col:8;--row:9"
-                  data-atomic-number="61" data-symbol="Pm"
+                  aria-label="Praseodymium, atomic number 59"
+                >
+                  <small>59</small><strong>Pr</strong><span>Praseodymium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 7; --row: 9"
+                  data-atomic-number="60"
+                  data-symbol="Nd"
+                  data-name="Neodymium"
+                  aria-label="Neodymium, atomic number 60"
+                >
+                  <small>60</small><strong>Nd</strong><span>Neodymium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 8; --row: 9"
+                  data-atomic-number="61"
+                  data-symbol="Pm"
                   data-name="Promethium"
-                  aria-label="Promethium, atomic number 61"><small>61</small><strong>Pm</strong><span>Promethium</span></button>
-                <button class="element-cell lanthanoid" style="--col:9;--row:9"
-                  data-atomic-number="62" data-symbol="Sm" data-name="Samarium"
-                  aria-label="Samarium, atomic number 62"><small>62</small><strong>Sm</strong><span>Samarium</span></button>
-                <button class="element-cell lanthanoid" style="--col:10;--row:9"
-                  data-atomic-number="63" data-symbol="Eu" data-name="Europium"
-                  aria-label="Europium, atomic number 63"><small>63</small><strong>Eu</strong><span>Europium</span></button>
-                <button class="element-cell lanthanoid" style="--col:11;--row:9"
-                  data-atomic-number="64" data-symbol="Gd"
+                  aria-label="Promethium, atomic number 61"
+                >
+                  <small>61</small><strong>Pm</strong><span>Promethium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 9; --row: 9"
+                  data-atomic-number="62"
+                  data-symbol="Sm"
+                  data-name="Samarium"
+                  aria-label="Samarium, atomic number 62"
+                >
+                  <small>62</small><strong>Sm</strong><span>Samarium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 10; --row: 9"
+                  data-atomic-number="63"
+                  data-symbol="Eu"
+                  data-name="Europium"
+                  aria-label="Europium, atomic number 63"
+                >
+                  <small>63</small><strong>Eu</strong><span>Europium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 11; --row: 9"
+                  data-atomic-number="64"
+                  data-symbol="Gd"
                   data-name="Gadolinium"
-                  aria-label="Gadolinium, atomic number 64"><small>64</small><strong>Gd</strong><span>Gadolinium</span></button>
-                <button class="element-cell lanthanoid" style="--col:12;--row:9"
-                  data-atomic-number="65" data-symbol="Tb" data-name="Terbium"
-                  aria-label="Terbium, atomic number 65"><small>65</small><strong>Tb</strong><span>Terbium</span></button>
-                <button class="element-cell lanthanoid" style="--col:13;--row:9"
-                  data-atomic-number="66" data-symbol="Dy"
+                  aria-label="Gadolinium, atomic number 64"
+                >
+                  <small>64</small><strong>Gd</strong><span>Gadolinium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 12; --row: 9"
+                  data-atomic-number="65"
+                  data-symbol="Tb"
+                  data-name="Terbium"
+                  aria-label="Terbium, atomic number 65"
+                >
+                  <small>65</small><strong>Tb</strong><span>Terbium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 13; --row: 9"
+                  data-atomic-number="66"
+                  data-symbol="Dy"
                   data-name="Dysprosium"
-                  aria-label="Dysprosium, atomic number 66"><small>66</small><strong>Dy</strong><span>Dysprosium</span></button>
-                <button class="element-cell lanthanoid" style="--col:14;--row:9"
-                  data-atomic-number="67" data-symbol="Ho" data-name="Holmium"
-                  aria-label="Holmium, atomic number 67"><small>67</small><strong>Ho</strong><span>Holmium</span></button>
-                <button class="element-cell lanthanoid" style="--col:15;--row:9"
-                  data-atomic-number="68" data-symbol="Er" data-name="Erbium"
-                  aria-label="Erbium, atomic number 68"><small>68</small><strong>Er</strong><span>Erbium</span></button>
-                <button class="element-cell lanthanoid" style="--col:16;--row:9"
-                  data-atomic-number="69" data-symbol="Tm" data-name="Thulium"
-                  aria-label="Thulium, atomic number 69"><small>69</small><strong>Tm</strong><span>Thulium</span></button>
-                <button class="element-cell lanthanoid" style="--col:17;--row:9"
-                  data-atomic-number="70" data-symbol="Yb" data-name="Ytterbium"
-                  aria-label="Ytterbium, atomic number 70"><small>70</small><strong>Yb</strong><span>Ytterbium</span></button>
-                <button class="element-cell lanthanoid" style="--col:18;--row:9"
-                  data-atomic-number="71" data-symbol="Lu" data-name="Lutetium"
-                  aria-label="Lutetium, atomic number 71"><small>71</small><strong>Lu</strong><span>Lutetium</span></button>
+                  aria-label="Dysprosium, atomic number 66"
+                >
+                  <small>66</small><strong>Dy</strong><span>Dysprosium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 14; --row: 9"
+                  data-atomic-number="67"
+                  data-symbol="Ho"
+                  data-name="Holmium"
+                  aria-label="Holmium, atomic number 67"
+                >
+                  <small>67</small><strong>Ho</strong><span>Holmium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 15; --row: 9"
+                  data-atomic-number="68"
+                  data-symbol="Er"
+                  data-name="Erbium"
+                  aria-label="Erbium, atomic number 68"
+                >
+                  <small>68</small><strong>Er</strong><span>Erbium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 16; --row: 9"
+                  data-atomic-number="69"
+                  data-symbol="Tm"
+                  data-name="Thulium"
+                  aria-label="Thulium, atomic number 69"
+                >
+                  <small>69</small><strong>Tm</strong><span>Thulium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 17; --row: 9"
+                  data-atomic-number="70"
+                  data-symbol="Yb"
+                  data-name="Ytterbium"
+                  aria-label="Ytterbium, atomic number 70"
+                >
+                  <small>70</small><strong>Yb</strong><span>Ytterbium</span>
+                </button>
+                <button
+                  class="element-cell lanthanoid"
+                  style="--col: 18; --row: 9"
+                  data-atomic-number="71"
+                  data-symbol="Lu"
+                  data-name="Lutetium"
+                  aria-label="Lutetium, atomic number 71"
+                >
+                  <small>71</small><strong>Lu</strong><span>Lutetium</span>
+                </button>
                 <div class="series-label act-label">Actinides</div>
-                <button class="element-cell actinoid" style="--col:4;--row:10"
-                  data-atomic-number="89" data-symbol="Ac" data-name="Actinium"
-                  aria-label="Actinium, atomic number 89"><small>89</small><strong>Ac</strong><span>Actinium</span></button>
-                <button class="element-cell actinoid" style="--col:5;--row:10"
-                  data-atomic-number="90" data-symbol="Th" data-name="Thorium"
-                  aria-label="Thorium, atomic number 90"><small>90</small><strong>Th</strong><span>Thorium</span></button>
-                <button class="element-cell actinoid" style="--col:6;--row:10"
-                  data-atomic-number="91" data-symbol="Pa"
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 4; --row: 10"
+                  data-atomic-number="89"
+                  data-symbol="Ac"
+                  data-name="Actinium"
+                  aria-label="Actinium, atomic number 89"
+                >
+                  <small>89</small><strong>Ac</strong><span>Actinium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 5; --row: 10"
+                  data-atomic-number="90"
+                  data-symbol="Th"
+                  data-name="Thorium"
+                  aria-label="Thorium, atomic number 90"
+                >
+                  <small>90</small><strong>Th</strong><span>Thorium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 6; --row: 10"
+                  data-atomic-number="91"
+                  data-symbol="Pa"
                   data-name="Protactinium"
-                  aria-label="Protactinium, atomic number 91"><small>91</small><strong>Pa</strong><span>Protactinium</span></button>
-                <button class="element-cell actinoid" style="--col:7;--row:10"
-                  data-atomic-number="92" data-symbol="U" data-name="Uranium"
-                  aria-label="Uranium, atomic number 92"><small>92</small><strong>U</strong><span>Uranium</span></button>
-                <button class="element-cell actinoid" style="--col:8;--row:10"
-                  data-atomic-number="93" data-symbol="Np" data-name="Neptunium"
-                  aria-label="Neptunium, atomic number 93"><small>93</small><strong>Np</strong><span>Neptunium</span></button>
-                <button class="element-cell actinoid" style="--col:9;--row:10"
-                  data-atomic-number="94" data-symbol="Pu" data-name="Plutonium"
-                  aria-label="Plutonium, atomic number 94"><small>94</small><strong>Pu</strong><span>Plutonium</span></button>
-                <button class="element-cell actinoid" style="--col:10;--row:10"
-                  data-atomic-number="95" data-symbol="Am" data-name="Americium"
-                  aria-label="Americium, atomic number 95"><small>95</small><strong>Am</strong><span>Americium</span></button>
-                <button class="element-cell actinoid" style="--col:11;--row:10"
-                  data-atomic-number="96" data-symbol="Cm" data-name="Curium"
-                  aria-label="Curium, atomic number 96"><small>96</small><strong>Cm</strong><span>Curium</span></button>
-                <button class="element-cell actinoid" style="--col:12;--row:10"
-                  data-atomic-number="97" data-symbol="Bk" data-name="Berkelium"
-                  aria-label="Berkelium, atomic number 97"><small>97</small><strong>Bk</strong><span>Berkelium</span></button>
-                <button class="element-cell actinoid" style="--col:13;--row:10"
-                  data-atomic-number="98" data-symbol="Cf"
+                  aria-label="Protactinium, atomic number 91"
+                >
+                  <small>91</small><strong>Pa</strong><span>Protactinium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 7; --row: 10"
+                  data-atomic-number="92"
+                  data-symbol="U"
+                  data-name="Uranium"
+                  aria-label="Uranium, atomic number 92"
+                >
+                  <small>92</small><strong>U</strong><span>Uranium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 8; --row: 10"
+                  data-atomic-number="93"
+                  data-symbol="Np"
+                  data-name="Neptunium"
+                  aria-label="Neptunium, atomic number 93"
+                >
+                  <small>93</small><strong>Np</strong><span>Neptunium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 9; --row: 10"
+                  data-atomic-number="94"
+                  data-symbol="Pu"
+                  data-name="Plutonium"
+                  aria-label="Plutonium, atomic number 94"
+                >
+                  <small>94</small><strong>Pu</strong><span>Plutonium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 10; --row: 10"
+                  data-atomic-number="95"
+                  data-symbol="Am"
+                  data-name="Americium"
+                  aria-label="Americium, atomic number 95"
+                >
+                  <small>95</small><strong>Am</strong><span>Americium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 11; --row: 10"
+                  data-atomic-number="96"
+                  data-symbol="Cm"
+                  data-name="Curium"
+                  aria-label="Curium, atomic number 96"
+                >
+                  <small>96</small><strong>Cm</strong><span>Curium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 12; --row: 10"
+                  data-atomic-number="97"
+                  data-symbol="Bk"
+                  data-name="Berkelium"
+                  aria-label="Berkelium, atomic number 97"
+                >
+                  <small>97</small><strong>Bk</strong><span>Berkelium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 13; --row: 10"
+                  data-atomic-number="98"
+                  data-symbol="Cf"
                   data-name="Californium"
-                  aria-label="Californium, atomic number 98"><small>98</small><strong>Cf</strong><span>Californium</span></button>
-                <button class="element-cell actinoid" style="--col:14;--row:10"
-                  data-atomic-number="99" data-symbol="Es"
+                  aria-label="Californium, atomic number 98"
+                >
+                  <small>98</small><strong>Cf</strong><span>Californium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 14; --row: 10"
+                  data-atomic-number="99"
+                  data-symbol="Es"
                   data-name="Einsteinium"
-                  aria-label="Einsteinium, atomic number 99"><small>99</small><strong>Es</strong><span>Einsteinium</span></button>
-                <button class="element-cell actinoid" style="--col:15;--row:10"
-                  data-atomic-number="100" data-symbol="Fm" data-name="Fermium"
-                  aria-label="Fermium, atomic number 100"><small>100</small><strong>Fm</strong><span>Fermium</span></button>
-                <button class="element-cell actinoid" style="--col:16;--row:10"
-                  data-atomic-number="101" data-symbol="Md"
+                  aria-label="Einsteinium, atomic number 99"
+                >
+                  <small>99</small><strong>Es</strong><span>Einsteinium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 15; --row: 10"
+                  data-atomic-number="100"
+                  data-symbol="Fm"
+                  data-name="Fermium"
+                  aria-label="Fermium, atomic number 100"
+                >
+                  <small>100</small><strong>Fm</strong><span>Fermium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 16; --row: 10"
+                  data-atomic-number="101"
+                  data-symbol="Md"
                   data-name="Mendelevium"
-                  aria-label="Mendelevium, atomic number 101"><small>101</small><strong>Md</strong><span>Mendelevium</span></button>
-                <button class="element-cell actinoid" style="--col:17;--row:10"
-                  data-atomic-number="102" data-symbol="No" data-name="Nobelium"
-                  aria-label="Nobelium, atomic number 102"><small>102</small><strong>No</strong><span>Nobelium</span></button>
-                <button class="element-cell actinoid" style="--col:18;--row:10"
-                  data-atomic-number="103" data-symbol="Lr"
+                  aria-label="Mendelevium, atomic number 101"
+                >
+                  <small>101</small><strong>Md</strong><span>Mendelevium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 17; --row: 10"
+                  data-atomic-number="102"
+                  data-symbol="No"
+                  data-name="Nobelium"
+                  aria-label="Nobelium, atomic number 102"
+                >
+                  <small>102</small><strong>No</strong><span>Nobelium</span>
+                </button>
+                <button
+                  class="element-cell actinoid"
+                  style="--col: 18; --row: 10"
+                  data-atomic-number="103"
+                  data-symbol="Lr"
                   data-name="Lawrencium"
-                  aria-label="Lawrencium, atomic number 103"><small>103</small><strong>Lr</strong><span>Lawrencium</span></button>
-              </div></div>
-            <div class="table-caption"><span>💡</span> Every element has a
-              story. Select one to start exploring.</div>
+                  aria-label="Lawrencium, atomic number 103"
+                >
+                  <small>103</small><strong>Lr</strong><span>Lawrencium</span>
+                </button>
+              </div>
+            </div>
+            <div class="table-caption">
+              <span>💡</span> Every element has a story. Select one to start
+              exploring.
+            </div>
           </section>
-          <section class="relationship-section"
-            aria-labelledby="relationships-heading"><div
-              class="relationship-heading"><div><p class="eyebrow">LOOK
-                  CLOSER</p><h2 id="relationships-heading">Related
-                  elements</h2></div><button class="text-button"
-                type="button">Explore all relationships <span
-                  aria-hidden="true">→</span></button></div><div
-              class="relationship-cards">
-              <article class="relationship-card"><span
-                  class="relationship-icon isotope-icon"
-                  aria-hidden="true">◉</span><div><h3>Isotopes</h3><p>Same
-                    element, different number of neutrons.</p></div><span
-                  class="relationship-example">¹⁶O · ¹⁷O · ¹⁸O</span></article>
-              <article class="relationship-card"><span
-                  class="relationship-icon isobar-icon"
-                  aria-hidden="true">⇄</span><div><h3>Isobars</h3><p>Different
-                    elements with the same mass number.</p></div><span
-                  class="relationship-example">¹⁴C · ¹⁴N</span></article>
-              <article class="relationship-card"><span
-                  class="relationship-icon isotone-icon"
-                  aria-hidden="true">⌘</span><div><h3>Isotones</h3><p>Different
-                    elements with the same neutrons.</p></div><span
-                  class="relationship-example">¹⁴C · ¹⁵N</span></article>
-              <article class="relationship-card"><span
-                  class="relationship-icon isodiaph-icon"
-                  aria-hidden="true">≈</span><div><h3>Isodiaphers</h3><p>Nuclei
-                    that share the same neutron excess.</p></div><span
-                  class="relationship-example">¹⁴C · ¹⁸O</span></article>
-            </div></section>
-          <footer class="page-footer"><span>Made for the endlessly curious <span
-                class="footer-heart">♥</span></span><span>Explore gently · Learn
-              deeply</span></footer>
+          <section
+            class="relationship-section"
+            aria-labelledby="relationships-heading"
+          >
+            <div class="relationship-heading">
+              <div>
+                <p class="eyebrow">LOOK CLOSER</p>
+                <h2 id="relationships-heading">Related elements</h2>
+              </div>
+              <button class="text-button" type="button">
+                Explore all relationships <span aria-hidden="true">→</span>
+              </button>
+            </div>
+            <div class="relationship-cards">
+              <article class="relationship-card">
+                <span class="relationship-icon isotope-icon" aria-hidden="true"
+                  >◉</span
+                >
+                <div>
+                  <h3>Isotopes</h3>
+                  <p>Same element, different number of neutrons.</p>
+                </div>
+                <span class="relationship-example">¹⁶O · ¹⁷O · ¹⁸O</span>
+              </article>
+              <article class="relationship-card">
+                <span class="relationship-icon isobar-icon" aria-hidden="true"
+                  >⇄</span
+                >
+                <div>
+                  <h3>Isobars</h3>
+                  <p>Different elements with the same mass number.</p>
+                </div>
+                <span class="relationship-example">¹⁴C · ¹⁴N</span>
+              </article>
+              <article class="relationship-card">
+                <span class="relationship-icon isotone-icon" aria-hidden="true"
+                  >⌘</span
+                >
+                <div>
+                  <h3>Isotones</h3>
+                  <p>Different elements with the same neutrons.</p>
+                </div>
+                <span class="relationship-example">¹⁴C · ¹⁵N</span>
+              </article>
+              <article class="relationship-card">
+                <span class="relationship-icon isodiaph-icon" aria-hidden="true"
+                  >≈</span
+                >
+                <div>
+                  <h3>Isodiaphers</h3>
+                  <p>Nuclei that share the same neutron excess.</p>
+                </div>
+                <span class="relationship-example">¹⁴C · ¹⁸O</span>
+              </article>
+            </div>
+          </section>
+          <footer class="page-footer">
+            <span
+              >Made for the endlessly curious
+              <span class="footer-heart">♥</span></span
+            ><span>Explore gently · Learn deeply</span>
+          </footer>
           <!-- Extra learning prompts follow the table so they appear as visitors scroll farther down. -->
           <aside class="scroll-only-info" aria-label="Explore further">
             <div class="tip-card">
               <span class="tip-icon" aria-hidden="true">✦</span>
-              <div><strong>Did you know?</strong><p>Atoms are mostly empty
-                  space. The nucleus is tiny, but holds nearly all the
-                  mass.</p></div>
+              <div>
+                <strong>Did you know?</strong>
+                <p>
+                  Atoms are mostly empty space. The nucleus is tiny, but holds
+                  nearly all the mass.
+                </p>
+              </div>
             </div>
-            <button class="help-link" type="button"><span
-                class="help-mark">?</span> How to explore Elementra <span
-                aria-hidden="true">↗</span></button>
+            <button class="help-link" type="button">
+              <span class="help-mark">?</span> How to explore Elementra
+              <span aria-hidden="true">↗</span>
+            </button>
           </aside>
         </main>
       </div>
     </div>
 
     <!-- Preview state: keep .is-open to see the card; JS can switch back to .hidden when wired. -->
-    <aside class="element-card is-open" id="element-card"
-      aria-labelledby="card-element-name" aria-hidden="false">
-      <div class="card-topline"><span class="card-type"><i></i>
-          NON-METAL</span><button class="bookmark-button card-bookmark"
-          type="button" aria-label="Bookmark Oxygen" aria-pressed="false"><svg
-            viewBox="0 0 24 24" aria-hidden="true"><path
-              d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z" /></svg></button></div>
-      <div class="element-card-identity"><div
-          class="card-number">8</div><div><h2
-            id="card-element-name">Oxygen</h2><p>Oxygen · Group 16 · Period
-            2</p></div><div class="card-symbol">O</div></div>
-      <div class="atom-illustration"
-        aria-label="Bohr model showing eight protons and eight electrons"><div
-          class="orbit orbit-one"><i class="electron e1"></i><i
-            class="electron e2"></i></div><div class="orbit orbit-two"><i
-            class="electron e3"></i><i class="electron e4"></i><i
-            class="electron e5"></i><i class="electron e6"></i><i
-            class="electron e7"></i><i class="electron e8"></i></div><div
-          class="nucleus"><b>8p⁺</b><small>8n⁰</small></div></div>
-      <div class="card-quick-facts"><div><span>Mass number</span><strong>16
-            u</strong></div><div><span>Valency</span><strong>2</strong></div><div><span>Classification</span><strong>Non-metal</strong></div><div><span>Electron
-            config.</span><strong>1s² 2s² 2p⁴</strong></div></div>
-      <section class="card-isotopes"><div
-          class="card-section-title"><h3>Isotopes</h3><button class="mini-link"
-            type="button">See all</button></div><div
-          class="isotope-pills"><span>¹⁶O <b>99.76%</b></span><span>¹⁷O
-            <b>0.04%</b></span><span>¹⁸O <b>0.20%</b></span></div></section>
-      <div class="card-related"><span class="related-dot"></span><p>Part of the
-          <strong>chalcogen</strong> family</p><span
-          aria-hidden="true">↗</span></div>
-      <button class="more-button" type="button"
-        aria-controls="element-overview">More about Oxygen <span
-          aria-hidden="true">↗</span></button>
+    <aside
+      class="element-card is-open"
+      id="element-card"
+      aria-labelledby="card-element-name"
+      aria-hidden="false"
+    >
+      <div class="card-topline">
+        <span class="card-type"><i></i> NON-METAL</span
+        ><button
+          class="bookmark-button card-bookmark"
+          type="button"
+          aria-label="Bookmark Oxygen"
+          aria-pressed="false"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="element-card-identity">
+        <div class="card-number">8</div>
+        <div>
+          <h2 id="card-element-name">Oxygen</h2>
+          <p>Oxygen · Group 16 · Period 2</p>
+        </div>
+        <div class="card-symbol">O</div>
+      </div>
+      <div
+        class="atom-illustration"
+        aria-label="Bohr model showing eight protons and eight electrons"
+      >
+        <div class="orbit orbit-one">
+          <i class="electron e1"></i><i class="electron e2"></i>
+        </div>
+        <div class="orbit orbit-two">
+          <i class="electron e3"></i><i class="electron e4"></i
+          ><i class="electron e5"></i><i class="electron e6"></i
+          ><i class="electron e7"></i><i class="electron e8"></i>
+        </div>
+        <div class="nucleus"><b>8p⁺</b><small>8n⁰</small></div>
+      </div>
+      <div class="card-quick-facts">
+        <div><span>Mass number</span><strong>16 u</strong></div>
+        <div><span>Valency</span><strong>2</strong></div>
+        <div><span>Classification</span><strong>Non-metal</strong></div>
+        <div><span>Electron config.</span><strong>1s² 2s² 2p⁴</strong></div>
+      </div>
+      <section class="card-isotopes">
+        <div class="card-section-title">
+          <h3>Isotopes</h3>
+          <button class="mini-link" type="button">See all</button>
+        </div>
+        <div class="isotope-pills">
+          <span>¹⁶O <b>99.76%</b></span
+          ><span>¹⁷O <b>0.04%</b></span
+          ><span>¹⁸O <b>0.20%</b></span>
+        </div>
+      </section>
+      <div class="card-related">
+        <span class="related-dot"></span>
+        <p>Part of the <strong>chalcogen</strong> family</p>
+        <span aria-hidden="true">↗</span>
+      </div>
+      <button
+        class="more-button"
+        type="button"
+        aria-controls="element-overview"
+      >
+        More about Oxygen <span aria-hidden="true">↗</span>
+      </button>
     </aside>
 
     <!-- Full-screen overview: JS removes .hidden before showModal() and restores it after close(). -->
-    <dialog class="overview-dialog hidden" id="element-overview"
-      aria-labelledby="overview-title">
-      <div class="overview-header"><div class="overview-heading"><span
-            class="overview-symbol">O</span><div><p class="eyebrow">ELEMENT
-              OVERVIEW · 08 / 118</p><h2 id="overview-title">Oxygen</h2><p>O ·
-              Atomic number 8 · Non-metal</p></div></div><div
-          class="overview-actions"><button
-            class="bookmark-button overview-bookmark" type="button"
-            aria-label="Bookmark Oxygen" aria-pressed="false"><svg
-              viewBox="0 0 24 24" aria-hidden="true"><path
-                d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z" /></svg></button><button
-            class="icon-button close-overview" type="button"
-            aria-label="Close overview">×</button></div></div>
-      <div class="overview-body">
-        <section class="overview-group"><h3><span>01</span> Identity &amp;
-            nuclear</h3><dl><div><dt>Name</dt><dd>Oxygen</dd></div><div><dt>Symbol</dt><dd>O</dd></div><div><dt>Atomic
-                number (Z)</dt><dd>8</dd></div><div><dt>Mass number
-                (A)</dt><dd>16 (most abundant)</dd></div><div><dt>Atomic
-                weight</dt><dd>15.999 u</dd></div><div><dt>Isotopes</dt><dd>3
-                stable · 14 known</dd></div><div><dt>Half-life</dt><dd>Stable
-                isotopes</dd></div><div><dt>Nuclear spin</dt><dd>0
-                (¹⁶O)</dd></div><div><dt>Decay
-                mode</dt><dd>—</dd></div></dl></section>
-        <section class="overview-group"><h3><span>02</span> Electronic &amp;
-            quantum</h3><dl><div><dt>Electron configuration</dt><dd>[He] 2s²
-                2p⁴</dd></div><div><dt>Valence
-                electrons</dt><dd>6</dd></div><div><dt>Quantum
-                numbers</dt><dd>2p⁴ · n=2, l=1</dd></div><div><dt>Ionization
-                energy</dt><dd>13.618 eV</dd></div><div><dt>Electron
-                affinity</dt><dd>1.461
-                eV</dd></div><div><dt>Electronegativity</dt><dd>3.44
-                (Pauling)</dd></div></dl></section>
-        <section class="overview-group"><h3><span>03</span> Periodic &amp;
-            classification</h3><dl><div><dt>Period · Group · Block</dt><dd>2 ·
-                16 · p-block</dd></div><div><dt>Element
-                category</dt><dd>Reactive
-                non-metal</dd></div><div><dt>Allotropes</dt><dd>Dioxygen (O₂),
-                ozone (O₃)</dd></div></dl></section>
-        <section class="overview-group"><h3><span>04</span> Atomic
-            radii</h3><dl><div><dt>Atomic radius</dt><dd>48
-                pm</dd></div><div><dt>Covalent radius</dt><dd>66
-                pm</dd></div><div><dt>Ionic radius</dt><dd>140 pm
-                (O²⁻)</dd></div><div><dt>Metallic
-                radius</dt><dd>—</dd></div><div><dt>Van der Waals
-                radius</dt><dd>152 pm</dd></div></dl></section>
-        <section class="overview-group"><h3><span>05</span> Physical &amp;
-            thermodynamic</h3><dl><div><dt>Phase
-                (STP)</dt><dd>Gas</dd></div><div><dt>Melting · boiling
-                point</dt><dd>−218.79 °C · −182.96
-                °C</dd></div><div><dt>Density</dt><dd>1.429
-                g/L</dd></div><div><dt>Fusion · vaporization</dt><dd>0.222 ·
-                3.41 kJ/mol</dd></div><div><dt>Atomization
-                enthalpy</dt><dd>249.2 kJ/mol</dd></div><div><dt>Heat
-                capacity</dt><dd>29.38
-                J/(mol·K)</dd></div><div><dt>Conductivity</dt><dd>Low
-                (gas)</dd></div></dl></section>
-        <section class="overview-group"><h3><span>06</span> Mechanical &amp;
-            crystallographic</h3><dl><div><dt>Crystal lattice</dt><dd>Monoclinic
-                (α-O₂)</dd></div><div><dt>Unit cell</dt><dd>Variable by
-                phase</dd></div><div><dt>Mohs
-                hardness</dt><dd>—</dd></div><div><dt>Young's · bulk
-                modulus</dt><dd>— · —</dd></div></dl></section>
-        <section class="overview-group"><h3><span>07</span> Electrical &amp;
-            magnetic</h3><dl><div><dt>Electrical
-                conductivity</dt><dd>Non-conductor
-                (gas)</dd></div><div><dt>Electrical
-                resistivity</dt><dd>—</dd></div><div><dt>Superconducting
-                T<sub>c</sub></dt><dd>0.6 K (under
-                pressure)</dd></div><div><dt>Magnetism</dt><dd>Paramagnetic
-                (O₂)</dd></div></dl></section>
-        <section class="overview-group"><h3><span>08</span> Chemical &amp;
-            electrochemical</h3><dl><div><dt>Oxidation states</dt><dd>−2, −1,
-                +1, +2</dd></div><div><dt>Standard reduction
-                potential</dt><dd>+1.229 V</dd></div><div><dt>Oxide acid-base
-                character</dt><dd>Varies by
-                compound</dd></div><div><dt>Reactivity profile</dt><dd>Strong
-                oxidizer; supports combustion</dd></div></dl></section>
-        <section class="overview-group"><h3><span>09</span>
-            Optical</h3><dl><div><dt>Color · luster</dt><dd>Colorless gas ·
-                —</dd></div><div><dt>Emission / absorption
-                spectra</dt><dd>Strong red and green
-                lines</dd></div></dl></section>
-        <section class="overview-group"><h3><span>10</span> Abundance &amp;
-            practical</h3><dl><div><dt>Cosmic · crustal abundance</dt><dd>~1% ·
-                46.1% by mass</dd></div><div><dt>Mineral sources</dt><dd>Oxides,
-                silicates, water</dd></div><div><dt>Biological
-                role</dt><dd>Essential for aerobic
-                life</dd></div><div><dt>Toxicity</dt><dd>Non-toxic; high
-                pressure is hazardous</dd></div><div><dt>Industrial
-                applications</dt><dd>Steelmaking, medicine, water
-                treatment</dd></div></dl></section>
+    <dialog
+      class="overview-dialog hidden"
+      id="element-overview"
+      aria-labelledby="overview-title"
+    >
+      <div class="overview-header">
+        <div class="overview-heading">
+          <span class="overview-symbol">O</span>
+          <div>
+            <p class="eyebrow">ELEMENT OVERVIEW · 08 / 118</p>
+            <h2 id="overview-title">Oxygen</h2>
+            <p>O · Atomic number 8 · Non-metal</p>
+          </div>
+        </div>
+        <div class="overview-actions">
+          <button
+            class="bookmark-button overview-bookmark"
+            type="button"
+            aria-label="Bookmark Oxygen"
+            aria-pressed="false"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z"
+              />
+            </svg></button
+          ><button
+            class="icon-button close-overview"
+            type="button"
+            aria-label="Close overview"
+          >
+            ×
+          </button>
+        </div>
       </div>
-      <div class="overview-footer"><span>Values shown for learning; conditions
-          may vary.</span><button class="overview-next" type="button">Next
-          element <span aria-hidden="true">→</span></button></div>
+      <div class="overview-body">
+        <section class="overview-group">
+          <h3><span>01</span> Identity &amp; nuclear</h3>
+          <dl>
+            <div>
+              <dt>Name</dt>
+              <dd>Oxygen</dd>
+            </div>
+            <div>
+              <dt>Symbol</dt>
+              <dd>O</dd>
+            </div>
+            <div>
+              <dt>Atomic number (Z)</dt>
+              <dd>8</dd>
+            </div>
+            <div>
+              <dt>Mass number (A)</dt>
+              <dd>16 (most abundant)</dd>
+            </div>
+            <div>
+              <dt>Atomic weight</dt>
+              <dd>15.999 u</dd>
+            </div>
+            <div>
+              <dt>Isotopes</dt>
+              <dd>3 stable · 14 known</dd>
+            </div>
+            <div>
+              <dt>Half-life</dt>
+              <dd>Stable isotopes</dd>
+            </div>
+            <div>
+              <dt>Nuclear spin</dt>
+              <dd>0 (¹⁶O)</dd>
+            </div>
+            <div>
+              <dt>Decay mode</dt>
+              <dd>—</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>02</span> Electronic &amp; quantum</h3>
+          <dl>
+            <div>
+              <dt>Electron configuration</dt>
+              <dd>[He] 2s² 2p⁴</dd>
+            </div>
+            <div>
+              <dt>Valence electrons</dt>
+              <dd>6</dd>
+            </div>
+            <div>
+              <dt>Quantum numbers</dt>
+              <dd>2p⁴ · n=2, l=1</dd>
+            </div>
+            <div>
+              <dt>Ionization energy</dt>
+              <dd>13.618 eV</dd>
+            </div>
+            <div>
+              <dt>Electron affinity</dt>
+              <dd>1.461 eV</dd>
+            </div>
+            <div>
+              <dt>Electronegativity</dt>
+              <dd>3.44 (Pauling)</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>03</span> Periodic &amp; classification</h3>
+          <dl>
+            <div>
+              <dt>Period · Group · Block</dt>
+              <dd>2 · 16 · p-block</dd>
+            </div>
+            <div>
+              <dt>Element category</dt>
+              <dd>Reactive non-metal</dd>
+            </div>
+            <div>
+              <dt>Allotropes</dt>
+              <dd>Dioxygen (O₂), ozone (O₃)</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>04</span> Atomic radii</h3>
+          <dl>
+            <div>
+              <dt>Atomic radius</dt>
+              <dd>48 pm</dd>
+            </div>
+            <div>
+              <dt>Covalent radius</dt>
+              <dd>66 pm</dd>
+            </div>
+            <div>
+              <dt>Ionic radius</dt>
+              <dd>140 pm (O²⁻)</dd>
+            </div>
+            <div>
+              <dt>Metallic radius</dt>
+              <dd>—</dd>
+            </div>
+            <div>
+              <dt>Van der Waals radius</dt>
+              <dd>152 pm</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>05</span> Physical &amp; thermodynamic</h3>
+          <dl>
+            <div>
+              <dt>Phase (STP)</dt>
+              <dd>Gas</dd>
+            </div>
+            <div>
+              <dt>Melting · boiling point</dt>
+              <dd>−218.79 °C · −182.96 °C</dd>
+            </div>
+            <div>
+              <dt>Density</dt>
+              <dd>1.429 g/L</dd>
+            </div>
+            <div>
+              <dt>Fusion · vaporization</dt>
+              <dd>0.222 · 3.41 kJ/mol</dd>
+            </div>
+            <div>
+              <dt>Atomization enthalpy</dt>
+              <dd>249.2 kJ/mol</dd>
+            </div>
+            <div>
+              <dt>Heat capacity</dt>
+              <dd>29.38 J/(mol·K)</dd>
+            </div>
+            <div>
+              <dt>Conductivity</dt>
+              <dd>Low (gas)</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>06</span> Mechanical &amp; crystallographic</h3>
+          <dl>
+            <div>
+              <dt>Crystal lattice</dt>
+              <dd>Monoclinic (α-O₂)</dd>
+            </div>
+            <div>
+              <dt>Unit cell</dt>
+              <dd>Variable by phase</dd>
+            </div>
+            <div>
+              <dt>Mohs hardness</dt>
+              <dd>—</dd>
+            </div>
+            <div>
+              <dt>Young's · bulk modulus</dt>
+              <dd>— · —</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>07</span> Electrical &amp; magnetic</h3>
+          <dl>
+            <div>
+              <dt>Electrical conductivity</dt>
+              <dd>Non-conductor (gas)</dd>
+            </div>
+            <div>
+              <dt>Electrical resistivity</dt>
+              <dd>—</dd>
+            </div>
+            <div>
+              <dt>Superconducting T<sub>c</sub></dt>
+              <dd>0.6 K (under pressure)</dd>
+            </div>
+            <div>
+              <dt>Magnetism</dt>
+              <dd>Paramagnetic (O₂)</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>08</span> Chemical &amp; electrochemical</h3>
+          <dl>
+            <div>
+              <dt>Oxidation states</dt>
+              <dd>−2, −1, +1, +2</dd>
+            </div>
+            <div>
+              <dt>Standard reduction potential</dt>
+              <dd>+1.229 V</dd>
+            </div>
+            <div>
+              <dt>Oxide acid-base character</dt>
+              <dd>Varies by compound</dd>
+            </div>
+            <div>
+              <dt>Reactivity profile</dt>
+              <dd>Strong oxidizer; supports combustion</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>09</span> Optical</h3>
+          <dl>
+            <div>
+              <dt>Color · luster</dt>
+              <dd>Colorless gas · —</dd>
+            </div>
+            <div>
+              <dt>Emission / absorption spectra</dt>
+              <dd>Strong red and green lines</dd>
+            </div>
+          </dl>
+        </section>
+        <section class="overview-group">
+          <h3><span>10</span> Abundance &amp; practical</h3>
+          <dl>
+            <div>
+              <dt>Cosmic · crustal abundance</dt>
+              <dd>~1% · 46.1% by mass</dd>
+            </div>
+            <div>
+              <dt>Mineral sources</dt>
+              <dd>Oxides, silicates, water</dd>
+            </div>
+            <div>
+              <dt>Biological role</dt>
+              <dd>Essential for aerobic life</dd>
+            </div>
+            <div>
+              <dt>Toxicity</dt>
+              <dd>Non-toxic; high pressure is hazardous</dd>
+            </div>
+            <div>
+              <dt>Industrial applications</dt>
+              <dd>Steelmaking, medicine, water treatment</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+      <div class="overview-footer">
+        <span>Values shown for learning; conditions may vary.</span
+        ><button class="overview-next" type="button">
+          Next element <span aria-hidden="true">→</span>
+        </button>
+      </div>
     </dialog>
   </body>
 </html>

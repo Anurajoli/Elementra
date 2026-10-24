@@ -1,5 +1,6 @@
 import * as model from './model.js';
 
+import elements from './elementData.js';
 import {
   hasSpecialCharacter,
   atomicNumberFind,
@@ -9,54 +10,58 @@ import {
 import manualSearchView from './view/manualSearchView.js';
 
 /////////////////////////////////////////////////////
+//
 
-async function handleManualSearchForm(query) {
+////////////////////helpers
+async function modifyAtNoFromAtNo(query) {
   try {
-    //Input Checking
-    if (query === model.state.atomicNumber) return;
+    if (query === model.state.atomicNumber) throw new Error('Ignore!');
 
-    if (hasSpecialCharacter(query))
-      throw new Error('Elements do not contain special characters.');
+    await checkAtomicNumber(query);
 
-    if (!Number.isNaN(+query)) {
-      await checkAtomicNumber(query);
-      model.state.atomicNumber = query;
-    } else {
-      const atomicNo = atomicNumberFind(query);
-      if (atomicNo === -1) throw new Error('Element not found.');
-
-      model.state.atomicNumber = atomicNo + 1;
-    }
-
-    //Finding Element
-    manualSearchView.render(model.findELementByAtNo());
+    model.state.atomicNumber = query;
   } catch (err) {
-    console.error(err);
-    manualSearchView.renderError('Invalid input', err.message);
+    throw err;
   }
 }
 
-async function handleManualSearchRealTime(query) {
+async function modifyAtNoFromElse(query) {
   try {
-    //Input Checking
-    if (query === model.state.atomicNumber) return;
+    if (model.state[`${model.state.searchMode}`] === query)
+      throw new Error('Ignore!');
 
-    if (hasSpecialCharacter(query))
-      throw new Error('Elements do not contain special characters.');
+    await hasSpecialCharacter(query);
+    const atomicNo = await atomicNumberFind(query);
 
-    if (!Number.isNaN(+query)) {
-      await checkAtomicNumber(query);
-      model.state.atomicNumber = query;
-    } else {
-      const atomicNo = atomicNumberFind(query);
-      if (atomicNo === -1) throw new Error('Element not found.');
+    model.state.atomicNumber = atomicNo + 1;
+  } catch (err) {
+    throw err;
+  }
+}
 
-      model.state.atomicNumber = atomicNo + 1;
-    }
+function updateStateProperties() {
+  const element = elements[model.state.atomicNumber - 1];
+
+  model.state.symbol = element.symbol;
+  model.state.name = element.name;
+}
+//////////////////////////
+
+async function handleManualSearchForm(query) {
+  try {
+   manualSearchView.renderSpinner()
+
+    model.state.searchMode === 'atomic-number'
+      ? await modifyAtNoFromAtNo(query)
+      : await modifyAtNoFromElse(query);
+
+    updateStateProperties();
 
     //Finding Element
     manualSearchView.render(model.findELementByAtNo());
   } catch (err) {
+    if (err.message === 'Ignore!') manualSearchView.clear()
+
     console.error(err);
     manualSearchView.renderError('Invalid input', err.message);
   }
@@ -70,6 +75,6 @@ function handleSearchModeChange(mode) {
 function init() {
   manualSearchView.addHandlerSearchForm(handleManualSearchForm);
   manualSearchView.addHandlerSearchMode(handleSearchModeChange);
-  manualSearchView.addHandlerSearchRealTime(handleManualSearchRealTime);
+  // manualSearchView.addHandlerSearchRealTime(handleManualSearchRealTime);
 }
 init();

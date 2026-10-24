@@ -1,5 +1,5 @@
 export default [
-  {ame: "Hydrogen", symbol: "H" },
+  {name: "Hydrogen", symbol: "H" },
   {name: "Helium", symbol: "He" },
   {name: "Lithium", symbol: "Li" },
   {name: "Beryllium", symbol: "Be" },

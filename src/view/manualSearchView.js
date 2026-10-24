@@ -5,6 +5,7 @@ class ManualSearchView extends View {
   _inputEl = document.getElementById('element-search');
   _searchForm = document.querySelector('.search-form');
   _searchModeEl = document.querySelector('.search-mode-picker');
+  _searchMode;
 
   constructor() {
     super();
@@ -13,7 +14,7 @@ class ManualSearchView extends View {
   addHandlerSearchForm(handler) {
     this._searchForm.addEventListener('submit', e => {
       e.preventDefault();
-      handler(this._refineQuery);
+      handler(this._refineQuery());
     });
   }
 
@@ -30,9 +31,11 @@ class ManualSearchView extends View {
       if (!option) return;
 
       const mode = option.firstElementChild.value;
-     
-      this._updateInputField(mode)
       handler(mode);
+      
+      this._updateInputField(mode);
+      this._searchMode = mode;
+      this._searchModeEl.removeAttribute('open')
     });
   }
 
@@ -41,30 +44,27 @@ class ManualSearchView extends View {
   }
 
   //Helpers
-  _updateInputField(mode){
-    console.log(mode)
-   if(mode === 'atomic-number'){
-    this._inputEl.type = 'number'
-    this._inputEl.min = '1'
-    this._inputEl.max = '118'
-   }
-
-   if(mode === 'symbol'){
-     this._inputEl.type = 'text';
-     this._inputEl.maxLength = '2';
-     this._inputEl.pattern = '[A-Za-z]{2}';
-   }
-
-   if(mode === 'name'){
-    this._inputEl.type = 'text'
-    this._inputEl.pattern = '[A-Za-z]';
-   }
-
+  _updateInputField(mode) {
+    switch (mode) {
+      case 'atomic-number':
+        this._inputEl.type = 'number';
+        break;
+      case 'symbol':
+        this._inputEl.maxLength = '2';
+        this._inputEl.type = 'text';
+      case 'name':
+        this._inputEl.type = 'text';
+        this._inputEl.maxLength && this._inputEl.removeAttribute('maxLength');
+    }
   }
 
   _refineQuery() {
-    let query = this._inputEl.value.trim();
-    query = query.slice(0, 1).toUpperCase() + query.slice(1).toLowerCase();
+    let query = this._inputEl.value;
+
+    query =
+      this._searchMode === 'atomic-number'
+        ? +query
+        : query.slice(0, 1).toUpperCase() + query.slice(1).toLowerCase();
 
     return query;
   }

@@ -1,12 +1,16 @@
 import elements from './elementData.js';
 import { MAX_ELEMENTS, MIN_ELEMENTS } from './configuration.js';
 
-export const hasSpecialCharacter = function (str) {
-  return /[^a-zA-Z0-9\s]/.test(str);
+export const hasSpecialCharacter = async function (str) {
+  if (/[^a-zA-Z0-9\s]/.test(str))
+    throw new Error('Elements do not contain special characters.');
 };
 
-export const atomicNumberFind = function (str) {
-  return elements.findIndex(el => el.symbol === str || el.name === str);
+export const atomicNumberFind = async function (str) {
+  const index = elements.findIndex(el => el.symbol === str || el.name === str);
+  if (index === -1) throw new Error('Element not found.');
+
+  return index;
 };
 
 export const checkAtomicNumber = async function (atomicNumber) {
