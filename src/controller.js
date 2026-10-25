@@ -1,3 +1,5 @@
+const myLove = 'Alisha Baby 💝';
+
 import * as model from './model.js';
 
 import elements from './elementData.js';
