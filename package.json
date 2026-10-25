@@ -11,9 +11,6 @@
     "build": "parcel build index.html --dist-dir ./dist"
   },
   "devDependencies": {
-
-  },
-  "dependencies": {
-    
-}
+    "parcel": "^2.16.4"
+  }
 }
