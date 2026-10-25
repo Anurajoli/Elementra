@@ -3,7 +3,7 @@ import * as model from './model.js';
 import elements from './elementData.js';
 import {
   hasSpecialCharacter,
-  atomicNumberFind,
+  getMatchingEl,
   checkAtomicNumber,
 } from './helper.js';
 
@@ -13,27 +13,30 @@ import manualSearchView from './view/manualSearchView.js';
 //
 
 ////////////////////helpers
-async function modifyAtNoFromAtNo(query) {
+async function modifyAtNoState(query) {
   try {
-    console.log(query)
-    if (query === model.state.atomicNumber || !query) throw new Error('Ignore!');
-    await checkAtomicNumber(query);
+    if (query === model.state.atomicNumber) throw new Error('Ignore!');
+    //Clears when input field is empty / 0
+    if (!query) throw new Error('Clear!');
 
+    await checkAtomicNumber(query);
     model.state.atomicNumber = query;
   } catch (err) {
+    //manupulate state when atomic no. is out of range
+    if (err.cause?.cause === 'Out of Range') model.state.atomicNumber = 0;
     throw err;
   }
 }
 
-async function modifyAtNoFromElse(query) {
+async function modifyMatchingElementsState(query) {
   try {
     if (model.state[`${model.state.searchMode}`] === query)
       throw new Error('Ignore!');
 
     await hasSpecialCharacter(query);
-    const atomicNo = await atomicNumberFind(query);
+    const matchingElements = await getMatchingEl(query, model.state.searchMode);
 
-    model.state.atomicNumber = atomicNo + 1;
+    model.state.matchingElements = matchingElements;
   } catch (err) {
     throw err;
   }
@@ -45,21 +48,29 @@ function updateStateProperties() {
   model.state.symbol = element.symbol;
   model.state.name = element.name;
 }
+
+function managaeSpecificError(msg) {
+  if (msg === 'Ignore!') return true;
+  if (msg === 'Clear!') {
+    manualSearchView.clear();
+    return true;
+  }
+}
 //////////////////////////
 
 //Handle form submit of Search
 async function handleManualSearchForm(query) {
   try {
     model.state.searchMode === 'atomic-number'
-      ? await modifyAtNoFromAtNo(query)
-      : await modifyAtNoFromElse(query);
+      ? await modifyAtNoState(query)
+      : await modifyMatchingElementsState(query);
 
     updateStateProperties();
 
     //Finding Element
     manualSearchView.render(model.findELementByAtNo());
   } catch (err) {
-    if (err.message === 'Ignore!') return;
+    if (managaeSpecificError(err.message)) return;
 
     console.error(err);
     manualSearchView.renderError('Invalid input', err.message);
@@ -69,17 +80,16 @@ async function handleManualSearchForm(query) {
 //Handle Search during typing
 async function handleManualSearchRealTime(query) {
   try {
-    console.log(query)
     model.state.searchMode === 'atomic-number'
-      ? await modifyAtNoFromAtNo(query)
-      : await modifyAtNoFromElse(query);
+      ? await modifyAtNoState(query)
+      : await modifyMatchingElementsState(query);
 
     updateStateProperties();
 
     //Finding Element
     manualSearchView.render(model.findELementByAtNo());
   } catch (err) {
-    if (err.message === 'Ignore!') return;
+    if (managaeSpecificError(err.message)) return;
 
     console.error(err);
     manualSearchView.renderError('Invalid input', err.message);

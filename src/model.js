@@ -1,11 +1,10 @@
 import elements from "./elementData.js"
 
 export const state = {
-    atomicNumber: 1, //Atomic Number
-    name: 'Hydrogen',
-    symbol: 'H',
+    atomicNumber: 0, //Atomic Number
+    matchingElements: [],
 
-    searchMode: 'atomic-number', //Search Mode (symbol, name, atomic number)
+    searchMode: 'name', //Search Mode (symbol, name, atomic number)
 }
 
 export const findELementByAtNo = function() {

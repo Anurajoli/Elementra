@@ -15,9 +15,7 @@ class ManualSearchView extends View {
   }
 
   addHandlerSearchRealTime(handler) {
-    console.log(this._inputEl)
     this._inputEl.addEventListener('input', () => {
-      console.log(this._inputEl)
         handler(this._refineQuery())
   });
   }

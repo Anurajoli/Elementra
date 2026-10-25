@@ -8,6 +8,9 @@ class View {
     this._clear()
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }
+  clear(){
+    this._clear ()
+  }
   _clear() {
     this._parentEl.replaceChildren();
   }
