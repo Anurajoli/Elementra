@@ -5,11 +5,7 @@ class ManualSearchView extends View {
   _inputEl = document.getElementById('element-search');
   _searchForm = document.querySelector('.search-form');
   _searchModeEl = document.querySelector('.search-mode-picker');
-  _searchMode;
-
-  constructor() {
-    super();
-  }
+  _searchMode = 'atomic-number';
 
   addHandlerSearchForm(handler) {
     this._searchForm.addEventListener('submit', e => {
@@ -19,10 +15,11 @@ class ManualSearchView extends View {
   }
 
   addHandlerSearchRealTime(handler) {
-    this._inputEl.addEventListener(
-      'input',
-      handler.bind(null, this._refineQuery()),
-    );
+    console.log(this._inputEl)
+    this._inputEl.addEventListener('input', () => {
+      console.log(this._inputEl)
+        handler(this._refineQuery())
+  });
   }
 
   addHandlerSearchMode(handler) {
@@ -32,9 +29,10 @@ class ManualSearchView extends View {
 
       const mode = option.firstElementChild.value;
       handler(mode);
-      
+
       this._updateInputField(mode);
       this._searchMode = mode;
+
       this._searchModeEl.removeAttribute('open')
     });
   }
@@ -70,7 +68,6 @@ class ManualSearchView extends View {
   }
 
   _generateMarkup(el, i) {
-    console.log(el, i);
     return ` <article class="result-item is-active"
                 data-atomic-number="${el.atomicNumber}"
                 tabindex="${i}">

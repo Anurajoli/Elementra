@@ -3,13 +3,12 @@ class View {
 
   render(data) {
     this._data = data;
-    console.log(this._data);
     const markup = this._markup();
 
-    this._parentEl.replaceChildren();
+    this._clear()
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }
-  clear() {
+  _clear() {
     this._parentEl.replaceChildren();
   }
   renderSpinner() {
@@ -30,7 +29,7 @@ class View {
                       </div>
                     </div>`;
 
-    this.clear();
+    this._clear();
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }
 
@@ -45,7 +44,7 @@ class View {
                          <div class="error-desc">${msg}</div>
                          </div>
                         </div>`;
-    this.clear()
+    this._clear();
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }
 }

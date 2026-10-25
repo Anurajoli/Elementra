@@ -15,8 +15,8 @@ import manualSearchView from './view/manualSearchView.js';
 ////////////////////helpers
 async function modifyAtNoFromAtNo(query) {
   try {
-    if (query === model.state.atomicNumber) throw new Error('Ignore!');
-
+    console.log(query)
+    if (query === model.state.atomicNumber || !query) throw new Error('Ignore!');
     await checkAtomicNumber(query);
 
     model.state.atomicNumber = query;
@@ -47,10 +47,9 @@ function updateStateProperties() {
 }
 //////////////////////////
 
+//Handle form submit of Search
 async function handleManualSearchForm(query) {
   try {
-   manualSearchView.renderSpinner()
-
     model.state.searchMode === 'atomic-number'
       ? await modifyAtNoFromAtNo(query)
       : await modifyAtNoFromElse(query);
@@ -60,13 +59,34 @@ async function handleManualSearchForm(query) {
     //Finding Element
     manualSearchView.render(model.findELementByAtNo());
   } catch (err) {
-    if (err.message === 'Ignore!') manualSearchView.clear()
+    if (err.message === 'Ignore!') return;
 
     console.error(err);
     manualSearchView.renderError('Invalid input', err.message);
   }
 }
 
+//Handle Search during typing
+async function handleManualSearchRealTime(query) {
+  try {
+    console.log(query)
+    model.state.searchMode === 'atomic-number'
+      ? await modifyAtNoFromAtNo(query)
+      : await modifyAtNoFromElse(query);
+
+    updateStateProperties();
+
+    //Finding Element
+    manualSearchView.render(model.findELementByAtNo());
+  } catch (err) {
+    if (err.message === 'Ignore!') return;
+
+    console.error(err);
+    manualSearchView.renderError('Invalid input', err.message);
+  }
+}
+
+//Change the searchmode from the Dom
 function handleSearchModeChange(mode) {
   model.state.searchMode = mode;
 }
@@ -75,6 +95,6 @@ function handleSearchModeChange(mode) {
 function init() {
   manualSearchView.addHandlerSearchForm(handleManualSearchForm);
   manualSearchView.addHandlerSearchMode(handleSearchModeChange);
-  // manualSearchView.addHandlerSearchRealTime(handleManualSearchRealTime);
+  manualSearchView.addHandlerSearchRealTime(handleManualSearchRealTime);
 }
 init();
