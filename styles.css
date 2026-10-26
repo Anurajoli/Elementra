@@ -88,10 +88,6 @@ body[data-theme="dark"] .result-item.is-active { background: #3d343a; }
 .bookmark-button:hover, .bookmark-button[aria-pressed="true"] { background: var(--pink); color: #b56e87; }
 .bookmark-button[aria-pressed="true"] svg { fill: currentColor; }
 .bookmark-button svg { width: 16px; height: 16px; }
-.pagination { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 18px; color: var(--muted); font-size: 10px; }
-.pagination button { width: 25px; height: 25px; display: grid; place-items: center; border: 0; border-radius: 7px; background: transparent; color: inherit; cursor: pointer; }
-.pagination button:disabled { opacity: .35; cursor: default; }
-.pagination .page-number.is-current { background: var(--sage); color: #314a31; font-weight: 700; }
 .tip-card { display: flex; gap: 10px; padding: 13px 12px; border: 1px solid #eee3d4; border-radius: 14px; background: #fbf7eb; }
 body[data-theme="dark"] .tip-card { border-color: var(--line); background: var(--surface-soft); }
 .tip-icon { color: #c39454; font-size: 16px; }
@@ -159,19 +155,6 @@ body[data-theme="dark"] .act-placeholder { --cell-bg: #403b35; --cell-ink: #e0d2
 .series-label { position: relative; align-self: center; color: var(--muted); font-size: 8px; white-space: nowrap; grid-column: 1 / span 3; padding-left: 1px; }
 .lanth-label { grid-row: 9; }.act-label { grid-row: 10; }
 .table-caption { display: flex; align-items: center; gap: 7px; padding: 7px 4px 0; color: var(--muted); font-size: 9px; }
-.relationship-section { margin-top: 28px; }
-.relationship-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 13px; }
-.relationship-heading .eyebrow { margin-bottom: 5px; }
-.relationship-heading h2 { margin: 0; font: 750 17px var(--font-display); letter-spacing: -.5px; }
-.text-button { padding: 5px 0; border: 0; background: transparent; color: var(--sage-deep); font-size: 10px; font-weight: 700; cursor: pointer; }
-.text-button span { padding-left: 4px; }
-.relationship-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.relationship-card { min-width: 0; display: grid; grid-template-columns: 31px 1fr; align-items: start; gap: 8px; padding: 13px 12px 11px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface); }
-.relationship-icon { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 10px; font-size: 17px; }
-.isotope-icon { background: #f8e9ed; color: #bd8196; }.isobar-icon { background: #eef0df; color: #8a9562; }.isotone-icon { background: #e9eff5; color: #8198b0; }.isodiaph-icon { background: #f7eee0; color: #bd9d62; }
-.relationship-card h3 { margin: 1px 0 4px; font: 700 11px var(--font-display); }
-.relationship-card p { min-height: 27px; margin: 0; color: var(--muted); font-size: 8px; line-height: 1.5; }
-.relationship-example { grid-column: 2; margin-top: 1px; color: var(--sage-deep); font: 600 9px var(--font-display); }
 .page-footer { display: flex; justify-content: space-between; margin-top: 26px; padding-top: 13px; border-top: 1px solid var(--line); color: var(--muted); font-size: 9px; }
 .footer-heart { color: #d795ab; }
 
@@ -183,9 +166,9 @@ body[data-theme="dark"] .act-placeholder { --cell-bg: #403b35; --cell-ink: #e0d2
   top: var(--element-card-top, 136px);
   left: var(--element-card-left, auto);
   right: var(--element-card-right, 28px);
-  width: min(340px, calc(100vw - 32px));
-  max-height: min(600px, calc(100vh - 40px));
-  max-height: min(600px, calc(100dvh - 40px));
+  width: min(360px, calc(100vw - 32px));
+  max-height: min(680px, calc(100vh - 40px));
+  max-height: min(680px, calc(100dvh - 40px));
   padding: 20px;
   overflow-y: auto;
   overscroll-behavior: contain;
@@ -222,7 +205,44 @@ body[data-theme="dark"] .act-placeholder { --cell-bg: #403b35; --cell-ink: #e0d2
 .card-quick-facts div { display: grid; gap: 4px; }.card-quick-facts span { color: var(--muted); font-size: 8px; }.card-quick-facts strong { font-size: 9px; }
 .card-isotopes { margin-top: 14px; }.card-section-title h3 { margin: 0; font: 700 11px var(--font-display); }.mini-link { padding: 0; border: 0; background: transparent; color: var(--sage-deep); font-size: 8px; cursor: pointer; }
 .isotope-pills { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }.isotope-pills span { padding: 6px 7px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); font-size: 8px; }.isotope-pills b { margin-left: 3px; color: var(--ink); font-size: 7px; }
-.card-related { display: flex; align-items: center; gap: 7px; margin-top: 13px; color: var(--muted); }.related-dot { width: 7px; height: 7px; border-radius: 50%; background: #bcabc9; }.card-related p { flex: 1; margin: 0; font-size: 8px; }.card-related strong { color: var(--ink); }
+.card-fun-fact {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  margin-top: 13px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-soft);
+}
+.fun-fact-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  background: #f6e2e9;
+  color: #875968;
+  font-size: 16px;
+}
+.fun-fact-copy { min-width: 0; }
+.fun-fact-label {
+  display: block;
+  margin: 1px 0 5px;
+  color: var(--sage-deep);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.fun-fact-copy p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 10px;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.fun-fact-copy strong { color: var(--sage-deep); }
 .more-button { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-top: 15px; padding: 11px 12px; border: 0; border-radius: 11px; background: #526d50; color: white; font-size: 10px; font-weight: 700; cursor: pointer; }
 .more-button:hover { background: #425a40; }
 
@@ -299,8 +319,6 @@ body[data-theme="dark"] .act-placeholder { --cell-bg: #403b35; --cell-ink: #e0d2
   .main-content { padding-inline: 25px; }
   .key-item { font-size: 7px; }
   .table-key { gap: 7px; }
-  .relationship-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .relationship-card p { min-height: 0; }
   .periodic-scroll { overflow-x: hidden; }
   .periodic-table { min-width: 0; grid-template-columns: repeat(18, minmax(0, 1fr)); grid-template-rows: repeat(10, var(--table-cell-height)); gap: 3px; padding-left: 16px; }
   .group-labels { left: 16px; grid-template-columns: repeat(18, minmax(0, 1fr)); gap: 3px; }
@@ -365,15 +383,6 @@ body[data-theme="dark"] .act-placeholder { --cell-bg: #403b35; --cell-ink: #e0d2
   .element-cell { padding: 5px 4px 4px; border-radius: 8px; }
   .element-cell strong { font-size: 13px; }
   .element-cell > span { font-size: 6px; }
-  .relationship-section { margin-top: 22px; }
-  .relationship-heading h2 { font-size: 16px; }
-  .text-button { font-size: 9px; }
-  .relationship-cards { gap: 7px; }
-  .relationship-card { grid-template-columns: 27px 1fr; gap: 7px; padding: 10px 8px; }
-  .relationship-icon { width: 26px; height: 26px; }
-  .relationship-card h3 { font-size: 10px; }
-  .relationship-card p { font-size: 7px; }
-  .relationship-example { font-size: 8px; }
   .page-footer { gap: 8px; font-size: 8px; }
   .scroll-only-info { margin-top: 24px; }
   .element-card { top: var(--element-card-top, auto); right: var(--element-card-right, 10px); bottom: var(--element-card-bottom, 10px); width: min(340px, calc(100vw - 20px)); max-height: calc(100vh - 20px); max-height: calc(100dvh - 20px); }
@@ -386,18 +395,15 @@ body[data-theme="dark"] .act-placeholder { --cell-bg: #403b35; --cell-ink: #e0d2
 }
 
 /* Small hover cues clarify what can be opened; keyboard users get the same feedback. */
-.icon-button, .bookmark-button, .theme-option, .pagination button, .table-view-button,
-.element-cell, .relationship-card, .text-button, .more-button {
+.icon-button, .bookmark-button, .theme-option, .table-view-button,
+.element-cell, .more-button {
   -webkit-tap-highlight-color: transparent;
 }
-.relationship-card { transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
-.relationship-card:hover { border-color: #ceddc8; box-shadow: 0 7px 18px rgb(49 61 49 / 8%); transform: translateY(-2px); }
-body[data-theme="dark"] .relationship-card:hover { border-color: #657b62; }
-.theme-option:hover:not(.is-selected), .pagination button:not(:disabled):hover { background: rgb(132 162 130 / 13%); color: var(--ink); }
-.text-button:focus-visible, .more-button:focus-visible, .table-view-button:focus-visible { outline-offset: 3px; }
+.theme-option:hover:not(.is-selected) { background: rgb(132 162 130 / 13%); color: var(--ink); }
+.more-button:focus-visible, .table-view-button:focus-visible { outline-offset: 3px; }
 
 @media (hover: none) {
-  .element-cell:hover, .relationship-card:hover { transform: none; box-shadow: none; }
+  .element-cell:hover { transform: none; box-shadow: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -675,7 +681,9 @@ body[data-theme="dark"] .search-mode-option:has(input:checked) {
     margin: 0 0 12px;
     inset: auto;
   }
+
 }
+
 
 /* Spinner */
 .spinner-container {
@@ -683,7 +691,7 @@ body[data-theme="dark"] .search-mode-option:has(input:checked) {
   justify-content: center;
   align-items: center;
   padding: 40px 0;
-  /* Creates generous vertical breathing room from the search box and pagination */
+  /* Creates generous vertical breathing room between a loading state and results. */
 }
 
 .spinner {

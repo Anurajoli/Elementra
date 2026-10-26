@@ -3,14 +3,15 @@ class View {
 
   render(data) {
     this._data = data;
-    console.log(data)
     const markup = this._markup();
 
-    this._clear()
+    // console.log(markup);
+
+    this._clear();
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }
-  clear(){
-    this._clear ()
+  clear() {
+    this._clear();
   }
   _clear() {
     this._parentEl.replaceChildren();

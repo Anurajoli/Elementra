@@ -3,6 +3,7 @@ window.myLove = 'Alisha Baby 💝';
 import * as model from './model.js';
 
 import manualSearchView from './view/manualSearchView.js';
+import elementCardView from './view/elementCardView.js';
 /////////////////////////////////////////////////////
 //
 
@@ -42,9 +43,20 @@ function handleSearchModeChange(mode) {
   model.state.searchMode = mode;
 }
 
+//Handle the clicks on search-item
+async function handleSearchListClick(atomicNumber) {
+  try {
+    await model.getElementsDataForCard(atomicNumber);
+    elementCardView.render(model.state.elementCard.data);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 //initialization when Page Loads
 function init() {
   manualSearchView.addHandlerSearchMode(handleSearchModeChange);
   manualSearchView.addHandlerManualSearch(handleManualSearch);
+  elementCardView.addHandlerResultList(handleSearchListClick);
 }
 init();
