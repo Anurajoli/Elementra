@@ -3,6 +3,7 @@ class View {
 
   render(data) {
     this._data = data;
+    console.log(data)
     const markup = this._markup();
 
     this._clear()

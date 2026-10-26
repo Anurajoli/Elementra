@@ -6,14 +6,8 @@ export const hasSpecialCharacter = async function (str) {
     throw new Error('Elements do not contain special characters.');
 };
 
-export const atomicNumberFind = async function (str) {
-  const index = elements.findIndex(el => el.symbol === str || el.name === str);
-  if (index === -1) throw new Error('Element not found.');
-
-  return index;
-};
-
 export const getMatchingEl = async function(str, searchMode) {
+  if(str === '') throw new Error('Clear!')
   const matchingEl = elements.filter(el => el[searchMode].startsWith(str))
 
   if(!matchingEl.length) throw new Error('Element not found.')

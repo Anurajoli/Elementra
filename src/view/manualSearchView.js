@@ -3,21 +3,26 @@ import View from './View.js';
 class ManualSearchView extends View {
   _parentEl = document.querySelector('.result-list');
   _inputEl = document.getElementById('element-search');
-  _searchForm = document.querySelector('.search-form');
   _searchModeEl = document.querySelector('.search-mode-picker');
+  _atomicNumberModeEl = document.querySelector(
+    '.search-mode-option input[value="atomic-number"]',
+  );
+
   _searchMode = 'atomic-number';
 
-  addHandlerSearchForm(handler) {
-    this._searchForm.addEventListener('submit', e => {
-      e.preventDefault();
-      handler(this._refineQuery());
-    });
-  }
-
-  addHandlerSearchRealTime(handler) {
+  addHandlerManualSearch(handler) {
     this._inputEl.addEventListener('input', () => {
-        handler(this._refineQuery())
-  });
+      const query = this._refineQuery()
+
+      //Check whether the input is number.
+      if (query !== '' && !Number.isNaN(+query) ) {
+        this._searchMode = 'atomic-number';
+        this._atomicNumberModeEl.click();
+        return handler(+query);
+      }
+
+      handler(query);
+    });
   }
 
   addHandlerSearchMode(handler) {
@@ -29,9 +34,10 @@ class ManualSearchView extends View {
       handler(mode);
 
       this._updateInputField(mode);
+      this._clear()
       this._searchMode = mode;
 
-      this._searchModeEl.removeAttribute('open')
+      this._searchModeEl.removeAttribute('open');
     });
   }
 
