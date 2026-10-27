@@ -1,4 +1,4 @@
-/* Elementra design tokens. The body data-theme attribute is the JS theme hook. */
+/* ZetaTable design tokens. The body data-theme attribute is the JS theme hook. */
 :root {
   color-scheme: light;
   --pink: #f6e2e9;
