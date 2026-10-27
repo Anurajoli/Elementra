@@ -46,7 +46,7 @@ function handleSearchModeChange(mode) {
 //Handle the clicks on search-item
 async function handleSearchListClick(atomicNumber) {
   try {
-    await model.getElementsDataForCard(atomicNumber);
+    await model.modifyElementCardData(atomicNumber);
     elementCardView.render(model.state.elementCard.data);
   } catch (err) {
     console.error(err);

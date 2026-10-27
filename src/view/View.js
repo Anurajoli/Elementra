@@ -5,8 +5,6 @@ class View {
     this._data = data;
     const markup = this._markup();
 
-    // console.log(markup);
-
     this._clear();
     this._parentEl.insertAdjacentHTML('afterbegin', markup);
   }

@@ -17,13 +17,9 @@ class ElementCardView extends View {
 
   _markup() {
     const data = this._data;
+    this._parentEl.classList.add('is-open');
 
-    return /*html*/ `<aside
-        class="element-card is-open"
-        id="element-card"
-        aria-labelledby="card-element-name"
-        aria-hidden="false"
-      >
+    return /*html*/ `
         <div class="card-topline">
           <span class="card-type">
             <i></i> ${data.classification}
@@ -83,7 +79,7 @@ class ElementCardView extends View {
           </div>
           <div>
             <span>Electron config.</span>
-            <strong>${data.electoConfig}</strong>
+            <strong>${this._generateMarkupElectroConfigSuperScript()}</strong>
           </div>
         </div>
         <section class="card-isotopes">
@@ -113,16 +109,51 @@ class ElementCardView extends View {
         >
           More about ${data.name} <span aria-hidden="true">↗</span>
         </button>
-      </aside>`;
+      `;
   }
+
+  //Helpers
   _generateIsotopesMarkup() {
-    return `${this._data.isotopes
+    return this._data.isotopes
       .map(
         iso => `<span>
-              <sup>${iso.massNumber}</sup>${this._data.symbol} <b>${iso.abundance}</b>
+              <sup>${iso.massNumber}</sup>${this._data.symbol} <b>${iso.abundance ?? 'Not Sure!'}</b>
             </span>`,
       )
-      .join('')}`;
+      .join('');
+  }
+  _generateMarkupElectroConfigSuperScript() {
+    return this._data.rawElectroConfig
+      .split(' ')
+      .map(
+        subshell => `${subshell.slice(0, 2)}<sup>${subshell.slice(2, 3)}</sup>`,
+      )
+      .join('');
+  }
+  _generateMarkupAtomIllustration(){
+    const config = this._data.organizeElecroConfig
+
+    return `<div
+          class="atom-illustration"
+          aria-label="Bohr model showing ${this._data.atomicNumber} protons and ${this._data.atomicNumber} electrons"
+        >
+       //////////todo
+          <div class="orbit orbit-one">
+            <i class="electron e1"></i>
+            <i class="electron e2"></i>
+          </div>
+          <div class="orbit orbit-two">
+            <i class="electron e3"></i>
+            <i class="electron e4"></i>
+            <i class="electron e5"></i>
+            <i class="electron e6"></i>
+            <i class="electron e7"></i>
+            <i class="electron e8"></i>
+          </div>
+          <div class="nucleus">
+            <b>${data.atomicNumber}p⁺</b>
+            <small>${(data.massNumber - data.atomicNumber).toFixed(0)}n⁰</small>
+          </div>`;
   }
 }
 

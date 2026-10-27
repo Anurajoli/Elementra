@@ -58,7 +58,7 @@ export const getSearchElementsData = function () {
   return state.matchingElements;
 };
 
-export const getElementsDataForCard = async function (atomicNumber) {
+export const modifyElementCardData = async function (atomicNumber) {
   try {
     const res = await fetch(`${API_ELEMENT_CARD}/${atomicNumber}/`);
     const data = await res.json();
@@ -74,9 +74,9 @@ export const getElementsDataForCard = async function (atomicNumber) {
       massNumber: data.atomic_mass,
       valency: data.oxidation_states,
       funFact: data.fun_fact,
-      rawElectoConfg: data.electron_configuration,
+      rawElectroConfig: data.electron_configuration,
       isotopes: organizeIsotopesObj(data.isotopes),
-      organizeElectoConfig: organizeElectroConfig(ata.electron_configuration),
+      organizeElectroConfig: organizeElectroConfig(data.electron_configuration),
     };
   } catch (err) {
     throw err;
