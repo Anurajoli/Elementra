@@ -192,13 +192,11 @@ body[data-theme="dark"] .act-placeholder { --cell-bg: #403b35; --cell-ink: #e0d2
 .element-card-identity p { margin: 3px 0 0; color: var(--muted); font-size: 9px; }
 .card-symbol { margin-left: auto; color: #7e9c77; font: 700 31px var(--font-display); }
 .atom-illustration { position: relative; width: 128px; height: 118px; margin: 4px auto 12px; display: grid; place-items: center; }
-.orbit { position: absolute; border: 1px solid #acc4a4; border-radius: 50%; }
-.orbit-one { width: 51px; height: 51px; animation: electron-orbit 7s linear infinite; }
-.orbit-two { width: 100px; height: 100px; border-color: #d8b1bd; animation: electron-orbit 12s linear infinite reverse; }
+.orbit { position: absolute; width: var(--shell-size); height: var(--shell-size); border: 1px solid #acc4a4; border-radius: 50%; animation: electron-orbit 7s linear infinite; }
+.orbit-two { border-color: #d8b1bd; animation-duration: 12s; animation-direction: reverse; }
 @keyframes electron-orbit { to { transform: rotate(360deg); } }
 .orbit-two::after { position: absolute; inset: -1px; border: 1px solid rgb(216 177 189 / 70%); border-radius: 50%; content: ""; transform: rotate(75deg); }
-.electron { position: absolute; width: 6px; height: 6px; border-radius: 50%; background: #d795ab; box-shadow: 0 0 0 3px rgb(215 149 171 / 13%); }
-.e1 { top: -3px; left: 22px; }.e2 { bottom: -3px; right: 22px; }.e3 { top: 14%; left: 8%; }.e4 { top: 20%; right: 1%; }.e5 { top: 77%; left: 4%; }.e6 { right: 7%; bottom: 15%; }.e7 { top: -3px; left: 48%; }.e8 { bottom: -3px; left: 48%; }
+.electron { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; border-radius: 50%; background: #d795ab; box-shadow: 0 0 0 3px rgb(215 149 171 / 13%); transform: rotate(var(--electron-angle)) translateY(calc(var(--shell-size) / -2)); }
 .nucleus { z-index: 1; width: 34px; height: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 50%; background: #e7b8c7; color: #754d5b; box-shadow: 0 2px 9px rgb(137 91 109 / 17%); }
 .nucleus b { font-size: 9px; }.nucleus small { font-size: 7px; }
 .card-quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; padding: 11px; border-radius: 13px; background: var(--surface-soft); }

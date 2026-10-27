@@ -32,24 +32,16 @@ export const organizeIsotopesObj = function (isotopes) {
 };
 
 export const organizeElectroConfig = function (arrangement) {
-  const configuration = new Map()
+  const configuration = new Map();
 
-  arrangement.split(' ').forEach(subShell => {
-    const principal = +subShell.slice(0, 1);
+  const subshells = arrangement.matchAll(/(\d+)([spdf])(\d+)/g);
+  for (const [, principal, subShellName, electronCount] of subshells) {
 
-    if (!configuration.has(principal)) configuration.set(principal, []);
-    let temp;
-    const subShellName = subShell.slice(1, 2);
-    const getElectronNo = () => subShell.slice(2, 3);
+    const shell = Number(principal);
+    if (!configuration.has(shell)) configuration.set(shell, []);
 
-    //Preparing object to push
-    if (subShellName === 's') temp = { s: getElectronNo() };
-    if (subShellName === 'p') temp = { p: getElectronNo() };
-    if (subShellName === 'd') temp = { d: getElectronNo() };
-    if (subShellName === 'f') temp = { f: getElectronNo() };
-
-    configuration.get(principal).push(temp);
-  });
+    configuration.get(shell).push({ [subShellName]: electronCount });
+  }
 
   return configuration;
 };

@@ -47,6 +47,7 @@ function handleSearchModeChange(mode) {
 async function handleSearchListClick(atomicNumber) {
   try {
     await model.modifyElementCardData(atomicNumber);
+    console.log(model.state.elementCard.data.organizeElectroConfig)
     elementCardView.render(model.state.elementCard.data);
   } catch (err) {
     console.error(err);

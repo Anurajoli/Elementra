@@ -1,4 +1,5 @@
 import View from './View.js';
+import numberToWords from 'number-to-words';
 
 class ElementCardView extends View {
   _parentEl = document.getElementById('element-card');
@@ -43,27 +44,7 @@ class ElementCardView extends View {
           </div>
           <div class="card-symbol">${data.symbol}</div>
         </div>
-        <div
-          class="atom-illustration"
-          aria-label="Bohr model showing eight protons and eight electrons"
-        >
-          <div class="orbit orbit-one">
-            <i class="electron e1"></i>
-            <i class="electron e2"></i>
-          </div>
-          <div class="orbit orbit-two">
-            <i class="electron e3"></i>
-            <i class="electron e4"></i>
-            <i class="electron e5"></i>
-            <i class="electron e6"></i>
-            <i class="electron e7"></i>
-            <i class="electron e8"></i>
-          </div>
-          <div class="nucleus">
-            <b>${data.atomicNumber}p⁺</b>
-            <small>${(data.massNumber - data.atomicNumber).toFixed(0)}n⁰</small>
-          </div>
-        </div>
+         ${this._generateMarkupAtomIllustration()}
         <div class="card-quick-facts">
           <div>
             <span>Mass number</span>
@@ -123,37 +104,46 @@ class ElementCardView extends View {
       .join('');
   }
   _generateMarkupElectroConfigSuperScript() {
-    return this._data.rawElectroConfig
-      .split(' ')
-      .map(
-        subshell => `${subshell.slice(0, 2)}<sup>${subshell.slice(2, 3)}</sup>`,
-      )
-      .join('');
+    return Array.from(
+      this._data.rawElectroConfig.matchAll(/(\d+[spdf])(\d+)/g),
+      ([, orbital, count]) => `${orbital}<sup>${count}</sup>`,
+    )
+      .join(' ');
   }
-  _generateMarkupAtomIllustration(){
-    const config = this._data.organizeElecroConfig
+  _generateMarkupAtomIllustration() {
+    const configuration = this._data.organizeElectroConfig;
+    const shellCount = configuration.size;
+    let shellDiv = '';
+
+    // Each entry represents one principal electron shell.
+    configuration.forEach((value, key) => {
+      const shellSize =
+        shellCount <= 1 ? 51 : 51 + ((key - 1) * 49) / (shellCount - 1);
+
+      shellDiv += `<div class="orbit orbit-${numberToWords.toWords(key)}" style="--shell-size: ${shellSize}px">
+      ${this._generateMarkupElectronList(value)}</div>`;
+    });
 
     return `<div
           class="atom-illustration"
           aria-label="Bohr model showing ${this._data.atomicNumber} protons and ${this._data.atomicNumber} electrons"
-        >
-       //////////todo
-          <div class="orbit orbit-one">
-            <i class="electron e1"></i>
-            <i class="electron e2"></i>
-          </div>
-          <div class="orbit orbit-two">
-            <i class="electron e3"></i>
-            <i class="electron e4"></i>
-            <i class="electron e5"></i>
-            <i class="electron e6"></i>
-            <i class="electron e7"></i>
-            <i class="electron e8"></i>
-          </div>
-          <div class="nucleus">
-            <b>${data.atomicNumber}p⁺</b>
-            <small>${(data.massNumber - data.atomicNumber).toFixed(0)}n⁰</small>
-          </div>`;
+        >${shellDiv}<div class="nucleus">
+            <b>${this._data.atomicNumber}p⁺</b>
+            <small>${(this._data.massNumber - this._data.atomicNumber).toFixed(0)}n⁰</small>
+          </div></div>`;
+  }
+
+  //Helper for Helper
+  _generateMarkupElectronList(subshells) {
+    const electronCount = subshells.reduce((total, subshell) => {
+      const [[, count]] = Object.entries(subshell);
+      return total + Number(count);
+    }, 0);
+
+    return Array.from({ length: electronCount }, (_, index) => {
+      const angle = (360 * index) / electronCount;
+      return `<i class="electron" style="--electron-angle: ${angle}deg"></i>`;
+    }).join('');
   }
 }
 
