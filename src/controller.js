@@ -59,5 +59,7 @@ function init() {
   manualSearchView.addHandlerSearchMode(handleSearchModeChange);
   manualSearchView.addHandlerManualSearch(handleManualSearch);
   elementCardView.addHandlerResultList(handleSearchListClick);
+  elementCardView.addHandlerDrag();
+  elementCardView.addHandlerFunFact();
 }
 init();

@@ -16,11 +16,89 @@ class ElementCardView extends View {
     });
   }
 
+  addHandlerDrag() {
+    let dragState;
+    const searchSection = document.querySelector('.search-sidebar');
+
+    const getPositionLimits = rect => {
+      const sidebar = searchSection.getBoundingClientRect();
+      const gap = 12;
+      const limits = {
+        minX: 8,
+        maxX: Math.max(8, window.innerWidth - rect.width - 8),
+        minY: 8,
+        maxY: Math.max(8, window.innerHeight - rect.height - 8),
+      };
+
+      if (sidebar.height > window.innerHeight * 0.6) {
+        limits.minX = Math.min(limits.maxX, sidebar.right + gap);
+      } else {
+        limits.minY = Math.min(limits.maxY, sidebar.bottom + gap);
+      }
+      return limits;
+    };
+
+    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+    this._parentEl.addEventListener('pointerdown', event => {
+      if (
+        !event.target.closest('.card-topline') ||
+        event.target.closest('button')
+      )
+        return;
+      if (event.button !== 0) return;
+
+      const rect = this._parentEl.getBoundingClientRect();
+      const limits = getPositionLimits(rect);
+      const left = clamp(rect.left, limits.minX, limits.maxX);
+      const top = clamp(rect.top, limits.minY, limits.maxY);
+
+      this._parentEl.classList.add('is-dragged', 'is-dragging');
+      this._parentEl.style.left = `${left}px`;
+      this._parentEl.style.top = `${top}px`;
+      this._parentEl.style.right = 'auto';
+      this._parentEl.style.bottom = 'auto';
+      dragState = {
+        pointerId: event.pointerId,
+        startX: event.clientX,
+        startY: event.clientY,
+        left,
+        top,
+      };
+      this._parentEl.setPointerCapture(event.pointerId);
+      event.preventDefault();
+    });
+
+    this._parentEl.addEventListener('pointermove', event => {
+      if (!dragState || event.pointerId !== dragState.pointerId) return;
+      const rect = this._parentEl.getBoundingClientRect();
+      const limits = getPositionLimits(rect);
+      this._parentEl.style.left = `${clamp(dragState.left + event.clientX - dragState.startX, limits.minX, limits.maxX)}px`;
+      this._parentEl.style.top = `${clamp(dragState.top + event.clientY - dragState.startY, limits.minY, limits.maxY)}px`;
+    });
+
+    const endDrag = event => {
+      if (!dragState || event.pointerId !== dragState.pointerId) return;
+      dragState = undefined;
+      this._parentEl.classList.remove('is-dragging');
+    };
+    this._parentEl.addEventListener('pointerup', endDrag);
+    this._parentEl.addEventListener('pointercancel', endDrag);
+  }
+
   _markup() {
     const data = this._data;
+    this._parentEl.style.setProperty(
+      '--element-color',
+      data.cpkHexColor || '#7e9c77',
+    );
+    this._parentEl.style.setProperty(
+      '--category-color',
+      data.categoryColor || '#9cbd9b',
+    );
     this._parentEl.classList.add('is-open');
 
-    return /*html*/ `
+    return `
         <div class="card-topline">
           <span class="card-type">
             <i></i> ${data.classification}
@@ -51,7 +129,7 @@ class ElementCardView extends View {
             <strong>${data.massNumber.toFixed(0)} u</strong>
           </div>
           <div>
-            <span>Valency</span>
+            <span>Oxidation states</span>
             <strong>${data.valency}</strong>
           </div>
           <div>
@@ -72,16 +150,9 @@ class ElementCardView extends View {
           ${this._generateIsotopesMarkup()}
           </div>
         </section>
-        <div class="card-fun-fact">
-          <span class="fun-fact-icon" aria-hidden="true">
-            ✦
-          </span>
-          <div class="fun-fact-copy">
-            <span class="fun-fact-label">FUN FACT</span>
-            <p>
-              <strong>${data.funFact}</strong>
-            </p>
-          </div>
+
+        ${this._generateFunFactMarkup()}
+
         </div>
         <button
           class="more-button"
@@ -93,12 +164,38 @@ class ElementCardView extends View {
       `;
   }
 
+  addHandlerFunFact() {
+    this._parentEl.addEventListener('click', e => {
+      const factToggle = e.target.closest('.fun-fact-text');
+      if (!factToggle) return;
+//TODO
+      const toggleBtn = factToggle.querySelector('.fun-fact-toggle');
+      const textEl = factToggle.querySelector('strong');
+
+      const toDo = textEl.textContent.length < 80;
+
+      textEl.textContent = toDo
+        ? this._data.funFact
+        : this._data.funFact.slice(0, 75) + '...';
+      toggleBtn.textContent = toDo ? '^' : '⌄';
+    });
+  }
+
   //Helpers
+  _generateFunFactMarkup() {
+    //TODO
+    return this._data.funFact.length > 75
+      ? ` <strong>${this._data.funFact.slice(0, 75) + '...'}</strong>
+              </p><button class="fun-fact-toggle" type="button" aria-expanded="false" aria-label="Show full fun fact">
+             <span aria-hidden="true">⌄</span>
+                </button>`
+      : `<p class="fun-fact-text"><strong>${this._data.funFact}</strong></p>`;
+  }
   _generateIsotopesMarkup() {
     return this._data.isotopes
       .map(
         iso => `<span>
-              <sup>${iso.massNumber}</sup>${this._data.symbol} <b>${iso.abundance ?? 'Not Sure!'}</b>
+              <sup>${iso.massNumber}</sup>${this._data.symbol} <b>${iso.abundance}</b>
             </span>`,
       )
       .join('');
@@ -107,21 +204,21 @@ class ElementCardView extends View {
     return Array.from(
       this._data.rawElectroConfig.matchAll(/(\d+[spdf])(\d+)/g),
       ([, orbital, count]) => `${orbital}<sup>${count}</sup>`,
-    )
-      .join(' ');
+    ).join(' ');
   }
   _generateMarkupAtomIllustration() {
-    const configuration = this._data.organizeElectroConfig;
-    const shellCount = configuration.size;
+    const electronsPerShell = this._data.electronsPerShell;
+    const shellCount = electronsPerShell.length;
     let shellDiv = '';
 
     // Each entry represents one principal electron shell.
-    configuration.forEach((value, key) => {
+    electronsPerShell.forEach((electronCount, index) => {
+      const shell = index + 1;
       const shellSize =
-        shellCount <= 1 ? 51 : 51 + ((key - 1) * 49) / (shellCount - 1);
+        shellCount <= 1 ? 51 : 51 + (index * 49) / (shellCount - 1);
 
-      shellDiv += `<div class="orbit orbit-${numberToWords.toWords(key)}" style="--shell-size: ${shellSize}px">
-      ${this._generateMarkupElectronList(value)}</div>`;
+      shellDiv += `<div class="orbit orbit-${numberToWords.toWords(shell)}" style="--shell-size: ${shellSize}px">
+      ${this._generateMarkupElectronList(electronCount)}</div>`;
     });
 
     return `<div
@@ -134,12 +231,7 @@ class ElementCardView extends View {
   }
 
   //Helper for Helper
-  _generateMarkupElectronList(subshells) {
-    const electronCount = subshells.reduce((total, subshell) => {
-      const [[, count]] = Object.entries(subshell);
-      return total + Number(count);
-    }, 0);
-
+  _generateMarkupElectronList(electronCount) {
     return Array.from({ length: electronCount }, (_, index) => {
       const angle = (360 * index) / electronCount;
       return `<i class="electron" style="--electron-angle: ${angle}deg"></i>`;

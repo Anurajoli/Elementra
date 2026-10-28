@@ -63,6 +63,8 @@ export const modifyElementCardData = async function (atomicNumber) {
     const res = await fetch(`${API_ELEMENT_CARD}/${atomicNumber}/`);
     const data = await res.json();
 
+    console.log(data);
+
     state.elementCard.atomicNumber = atomicNumber;
     state.elementCard.data = {
       atomicNumber,
@@ -75,6 +77,7 @@ export const modifyElementCardData = async function (atomicNumber) {
       valency: data.oxidation_states,
       funFact: data.fun_fact,
       rawElectroConfig: data.electron_configuration,
+      electronsPerShell: data.electrons_per_shell,
       isotopes: organizeIsotopesObj(data.isotopes),
       organizeElectroConfig: organizeElectroConfig(data.electron_configuration),
     };

@@ -1,5 +1,6 @@
 import elements from './elementData.js';
 import { MAX_ELEMENTS, MIN_ELEMENTS } from './configuration.js';
+import toSuperScript from './superScriptUnicode.js';
 
 export const hasSpecialCharacter = async function (str) {
   if (/[^a-zA-Z0-9\s]/.test(str))
@@ -27,7 +28,13 @@ export const checkAtomicNumber = async function (atomicNumber) {
 
 export const organizeIsotopesObj = function (isotopes) {
   return isotopes.map(iso => {
-    return { abundance: iso.abundance, massNumber: iso.mass_number };
+    const abundance = iso.abundance
+      ? getScientificNotation(iso.abundance)
+      : 'Not Sure!';
+    return {
+      abundance,
+      massNumber: iso.mass_number,
+    };
   });
 };
 
@@ -36,7 +43,6 @@ export const organizeElectroConfig = function (arrangement) {
 
   const subshells = arrangement.matchAll(/(\d+)([spdf])(\d+)/g);
   for (const [, principal, subShellName, electronCount] of subshells) {
-
     const shell = Number(principal);
     if (!configuration.has(shell)) configuration.set(shell, []);
 
@@ -45,3 +51,21 @@ export const organizeElectroConfig = function (arrangement) {
 
   return configuration;
 };
+
+//HElpers
+function getScientificNotation(num) {
+  let exponent = 0;
+
+  while (num < 1) {
+    num *= 10;
+    exponent--;
+  }
+
+  exponent = exponent
+    .toString()
+    .split('')
+    .map(digit => toSuperScript[digit])
+    .join('');
+
+  return `${num.toFixed(2)}\u271610${exponent}`;
+}

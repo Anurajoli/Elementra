@@ -1511,84 +1511,11 @@
 
     <!-- Preview state: keep .is-open to see the card; JS can switch back to .hidden when wired. -->
     <aside
-      class="element-card is-open"
+      class="element-card"
       id="element-card"
       aria-labelledby="card-element-name"
       aria-hidden="false"
-    >
-      <div class="card-topline">
-        <span class="card-type"><i></i> NON-METAL</span
-        ><button
-          class="bookmark-button card-bookmark"
-          type="button"
-          aria-label="Bookmark Oxygen"
-          aria-pressed="false"
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M6 4.75A1.75 1.75 0 0 1 7.75 3h8.5A1.75 1.75 0 0 1 18 4.75V21l-6-3.7L6 21V4.75Z"
-            />
-          </svg>
-        </button>
-      </div>
-      <div class="element-card-identity">
-        <div class="card-number">8</div>
-        <div>
-          <h2 id="card-element-name">Oxygen</h2>
-          <p>Oxygen · Group 16 · Period 2</p>
-        </div>
-        <div class="card-symbol">O</div>
-      </div>
-      <div
-        class="atom-illustration"
-        aria-label="Bohr model showing eight protons and eight electrons"
-      >
-        <div class="orbit orbit-one">
-          <i class="electron e1"></i><i class="electron e2"></i>
-        </div>
-        <div class="orbit orbit-two">
-          <i class="electron e3"></i><i class="electron e4"></i
-          ><i class="electron e5"></i><i class="electron e6"></i
-          ><i class="electron e7"></i><i class="electron e8"></i>
-        </div>
-        <div class="nucleus"><b>8p⁺</b><small>8n⁰</small></div>
-      </div>
-      <div class="card-quick-facts">
-        <div><span>Mass number</span><strong>16 u</strong></div>
-        <div><span>Valency</span><strong>2</strong></div>
-        <div><span>Classification</span><strong>Non-metal</strong></div>
-        <div><span>Electron config.</span><strong>1s² 2s² 2p⁴</strong></div>
-      </div>
-      <section class="card-isotopes">
-        <div class="card-section-title">
-          <h3>Isotopes</h3>
-          <button class="mini-link" type="button">See all</button>
-        </div>
-        <div class="isotope-pills">
-          <span>¹⁶O <b>99.76%</b></span
-          ><span>¹⁷O <b>0.04%</b></span
-          ><span>¹⁸O <b>0.20%</b></span>
-        </div>
-      </section>
-      <div class="card-fun-fact">
-        <span class="fun-fact-icon" aria-hidden="true">✦</span>
-        <div class="fun-fact-copy">
-          <span class="fun-fact-label">FUN FACT</span>
-          <p>
-            Patients drink <strong>barium sulfate</strong> before X-rays. Barium
-            is toxic, but the sulfate form is so insoluble that it passes
-            through safely.
-          </p>
-        </div>
-      </div>
-      <button
-        class="more-button"
-        type="button"
-        aria-controls="element-overview"
-      >
-        More about Oxygen <span aria-hidden="true">↗</span>
-      </button>
-    </aside>
+    ></aside>
 
     <!-- Full-screen overview: JS removes .hidden before showModal() and restores it after close(). -->
     <dialog
