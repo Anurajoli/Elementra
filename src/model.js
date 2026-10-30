@@ -1,11 +1,14 @@
 import elements from './elementData.js';
+
 import {
   checkAtomicNumber,
   hasSpecialCharacter,
   getMatchingEl,
   organizeIsotopesObj,
   organizeElectroConfig,
+  getJSON,
 } from './helper.js';
+
 import { API_ELEMENT_CARD } from './configuration.js';
 
 //State
@@ -60,10 +63,7 @@ export const getSearchElementsData = function () {
 
 export const modifyElementCardData = async function (atomicNumber) {
   try {
-    const res = await fetch(`${API_ELEMENT_CARD}/${atomicNumber}/`);
-    const data = await res.json();
-
-    console.log(data);
+    const data = await getJSON(`${API_ELEMENT_CARD}/${atomicNumber}/`);
 
     state.elementCard.atomicNumber = atomicNumber;
     state.elementCard.data = {

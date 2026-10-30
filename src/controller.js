@@ -3,8 +3,7 @@ window.myLove = 'Alisha Baby 💝';
 import * as model from './model.js';
 
 import manualSearchView from './view/manualSearchView.js';
-import elementCardView from './view/elementCardView.js';
-/////////////////////////////////////////////////////
+import elementCardView from './view/elementCardView.js'; /////////////////////////////////////////////////////
 //
 
 //////////////////// helpers
@@ -47,9 +46,14 @@ function handleSearchModeChange(mode) {
 async function handleSearchListClick(atomicNumber) {
   try {
     await model.modifyElementCardData(atomicNumber);
-    console.log(model.state.elementCard.data.organizeElectroConfig)
     elementCardView.render(model.state.elementCard.data);
   } catch (err) {
+    const errRenderingMsg =
+      err.message === 'Failed to fetch'
+        ? ['No Internet! ⛔', 'Check your Internet Connection.']
+        : ['Error Occurred', err.message];
+
+    elementCardView.renderError(...errRenderingMsg);
     console.error(err);
   }
 }

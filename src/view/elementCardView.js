@@ -11,7 +11,6 @@ class ElementCardView extends View {
       if (!btn) return;
 
       const { atomicNumber } = btn.dataset;
-
       handler(+atomicNumber);
     });
   }
@@ -168,16 +167,18 @@ class ElementCardView extends View {
     this._parentEl.addEventListener('click', e => {
       const factToggle = e.target.closest('.fun-fact-text');
       if (!factToggle) return;
-//TODO
-      const toggleBtn = factToggle.querySelector('.fun-fact-toggle');
+
+      const toggleBtn = factToggle.nextElementSibling;
       const textEl = factToggle.querySelector('strong');
 
-      const toDo = textEl.textContent.length < 80;
+      const condition = textEl.textContent.length < 80;
 
-      textEl.textContent = toDo
+      textEl.textContent = condition
         ? this._data.funFact
         : this._data.funFact.slice(0, 75) + '...';
-      toggleBtn.textContent = toDo ? '^' : '⌄';
+      toggleBtn.textContent = condition ? '^' : '⌄';
+
+      toggleBtn.classList.toggle('is-expanded')
     });
   }
 
@@ -185,8 +186,9 @@ class ElementCardView extends View {
   _generateFunFactMarkup() {
     //TODO
     return this._data.funFact.length > 75
-      ? ` <strong>${this._data.funFact.slice(0, 75) + '...'}</strong>
-              </p><button class="fun-fact-toggle" type="button" aria-expanded="false" aria-label="Show full fun fact">
+      ? `<p class="fun-fact-text">
+                    <strong>${this._data.funFact.slice(0, 75) + '...'}</strong>
+                  </p><button class="fun-fact-toggle" type="button" aria-expanded="false" aria-label="Show full fun fact">
              <span aria-hidden="true">⌄</span>
                 </button>`
       : `<p class="fun-fact-text"><strong>${this._data.funFact}</strong></p>`;

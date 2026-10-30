@@ -52,6 +52,18 @@ export const organizeElectroConfig = function (arrangement) {
   return configuration;
 };
 
+export const getJSON = async function (url) {
+  try {
+    const response = await fetch(url);
+    if(!response.ok) throw new Error(`HTTP ERROR: ${response.status}.`)
+
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
+
 //HElpers
 function getScientificNotation(num) {
   let exponent = 0;
